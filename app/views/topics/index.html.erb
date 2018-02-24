@@ -1,0 +1,20 @@
+<h1>Topics</h1>
+<%= link_to "Create new", new_topic_path, class: 'btn btn-success' %>
+
+<div class="row">
+  <div class="col-md-8">
+    <% @topics.each do |topic| %>
+      <div>
+        <h3><%= link_to topic.title, topic %></h3>
+        <% @bookmarks.each do |bookmark| %>
+          <% if bookmark.topic_id == topic.id %>
+            <div class="bookmark-holder">
+              <div class="space-maker"></div>
+              <h5 class="text-center"><%= bookmark.url %></h5>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
