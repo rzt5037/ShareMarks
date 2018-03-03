@@ -2,11 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :topics, except: [:edit,:update] do
-    resources :bookmarks, except: [:index,:show]
-  end
+  resources :topics
 
-  resources :welcome, only: [:index]
+  resources :welcome, only: [:index, :about]
 
   root 'welcome#index'
 
