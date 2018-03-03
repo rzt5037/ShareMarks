@@ -7262,3 +7262,5 @@ Processing by TopicsController#index as HTML
   [1m[35mBookmark Load (0.1ms)[0m  SELECT "bookmarks".* FROM "bookmarks"
   Rendered topics/index.html.erb within layouts/application (1.3ms)
 Completed 200 OK in 33ms (Views: 31.3ms | ActiveRecord: 0.3ms)
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mTopic Load (0.6ms)[0m  SELECT  "topics".* FROM "topics"  ORDER BY "topics"."id" ASC LIMIT 1
