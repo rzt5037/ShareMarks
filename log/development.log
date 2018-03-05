@@ -8509,3 +8509,148 @@ Started GET "/assets/topics.self-a3d067ef4213f44971c2f561ed32662e8cc3c9d173886db
   [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1
   [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", nil]]
   [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT 1  [["email", "r.z.travis@gmail.com"]]
+
+
+Started GET "/topics/1" for ::1 at 2018-03-04 19:02:59 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mTopic Load (0.2ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mBookmark Load (0.2ms)[0m  SELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?  [["topic_id", 1]]
+  Rendered topics/show.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 1885ms (Views: 1837.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/assets/topics.self-a3d067ef4213f44971c2f561ed32662e8cc3c9d173886db0bd0cfaf9dae0401e.css?body=1" for ::1 at 2018-03-04 19:03:01 -0700
+
+
+Started GET "/topics" for ::1 at 2018-03-04 19:03:05 -0700
+Processing by TopicsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mTopic Load (0.1ms)[0m  SELECT "topics".* FROM "topics"
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks"[0m
+  Rendered topics/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 51ms (Views: 49.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/topics/new" for ::1 at 2018-03-04 19:03:11 -0700
+Processing by TopicsController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  Rendered topics/new.html.erb within layouts/application (544.6ms)
+Completed 200 OK in 582ms (Views: 579.2ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/topics" for ::1 at 2018-03-04 19:03:14 -0700
+Processing by TopicsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ahmpErY2ukascDEdJdJ1PVFLhZz3X6Q7YtylesxPQfIVpBq186EsabIx7X81VCj6Z4K+48yf0igkeNtHm/Ee8w==", "topic"=>{"title"=>"rawr"}, "commit"=>"Save"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "topics" ("title", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "rawr"], ["user_id", 6], ["created_at", "2018-03-05 02:03:14.616827"], ["updated_at", "2018-03-05 02:03:14.616827"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+Redirected to http://localhost:3000/topics/6
+Completed 302 Found in 5ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/topics/6" for ::1 at 2018-03-04 19:03:14 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?[0m  [["topic_id", 6]]
+  Rendered topics/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 34ms (Views: 32.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/topics/6/bookmarks/new" for ::1 at 2018-03-04 19:03:16 -0700
+Processing by BookmarksController#new as HTML
+  Parameters: {"topic_id"=>"6"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  Rendered bookmarks/new.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 46ms (Views: 44.2ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/topics/6/bookmarks" for ::1 at 2018-03-04 19:03:18 -0700
+Processing by BookmarksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bhr9FvP9qCpt+1sbbaK9s+tKxknQCUOjA5dYiWGZEQMRp06xtmo+BXO6h3l9JOB03YP9NuvJNbBFMya0NidOAg==", "bookmark"=>{"url"=>"awrawr"}, "commit"=>"Save", "topic_id"=>"6"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "bookmarks" ("url", "topic_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["url", "awrawr"], ["topic_id", 6], ["created_at", "2018-03-05 02:03:18.261747"], ["updated_at", "2018-03-05 02:03:18.261747"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+Redirected to http://localhost:3000/topics/6
+Completed 302 Found in 6ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/topics/6" for ::1 at 2018-03-04 19:03:18 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?[0m  [["topic_id", 6]]
+  Rendered topics/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 38ms (Views: 36.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/topics/6/bookmarks/16/edit" for ::1 at 2018-03-04 19:03:20 -0700
+Processing by BookmarksController#edit as HTML
+  Parameters: {"topic_id"=>"6", "id"=>"16"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1  [["id", 16]]
+  Rendered bookmarks/edit.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 45ms (Views: 42.5ms | ActiveRecord: 0.4ms)
+
+
+Started PATCH "/topics/6/bookmarks/16" for ::1 at 2018-03-04 19:03:21 -0700
+Processing by BookmarksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"M7KJ1cTynKUG3nZWbCLsrroFKN+UOOASDFKpa5Ck6BhMDzpygWUKihifqjR8pLFpjMwToK/4lgFK9tdWxxq3GQ==", "bookmark"=>{"url"=>"awrawrawrawrawrar"}, "commit"=>"Save", "topic_id"=>"6", "id"=>"16"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1[0m  [["id", 16]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "bookmarks" SET "url" = ?, "updated_at" = ? WHERE "bookmarks"."id" = ?[0m  [["url", "awrawrawrawrawrar"], ["updated_at", "2018-03-05 02:03:22.006651"], ["id", 16]]
+  [1m[35m (1.2ms)[0m  commit transaction
+Redirected to http://localhost:3000/topics/6
+Completed 302 Found in 6ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/topics/6" for ::1 at 2018-03-04 19:03:22 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?[0m  [["topic_id", 6]]
+  Rendered topics/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 41ms (Views: 37.9ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/topics/6/bookmarks/16" for ::1 at 2018-03-04 19:03:24 -0700
+Processing by BookmarksController#destroy as HTML
+  Parameters: {"authenticity_token"=>"voeNh0EYiV4wiyjDNJ/J3kZc+3SiNMZ9uzGTyOgFa1jBOj4gBI8fcS7K9KEkGZQZcJXAC5n0sG79le31v7s0WQ==", "topic_id"=>"6", "id"=>"16"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mTopic Load (0.2ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1  [["id", 16]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "bookmarks" WHERE "bookmarks"."id" = ?  [["id", 16]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/topics/6
+Completed 302 Found in 5ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/topics/6" for ::1 at 2018-03-04 19:03:24 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?  [["topic_id", 6]]
+  Rendered topics/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 32ms (Views: 29.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/topics" for ::1 at 2018-03-04 19:03:25 -0700
+Processing by TopicsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mTopic Load (0.1ms)[0m  SELECT "topics".* FROM "topics"
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks"[0m
+  Rendered topics/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 38ms (Views: 36.1ms | ActiveRecord: 0.4ms)
