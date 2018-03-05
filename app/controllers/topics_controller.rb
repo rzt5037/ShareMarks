@@ -1,4 +1,7 @@
 class TopicsController < ApplicationController
+  #skip_before_action :verify_authenticity_token, only: [:index,:show]
+  before_action :authenticate_user!, :except => [:show, :index]
+
   def index
     @topics = Topic.all
     @bookmarks = Bookmark.all
