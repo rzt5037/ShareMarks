@@ -7267,3 +7267,1245 @@ Completed 200 OK in 33ms (Views: 31.3ms | ActiveRecord: 0.3ms)
   [1m[35mTopic Load (0.6ms)[0m  SELECT  "topics".* FROM "topics"  ORDER BY "topics"."id" ASC LIMIT 1
 =======
 >>>>>>> parent of a90574d... CRUD actions added for Bookmarks
+  [1m[36m (1.2ms)[0m  [1mCREATE TABLE "bookmarks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar, "topic_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.4ms)[0m  select sqlite_version(*)
+  [1m[36m (1.3ms)[0m  [1mCREATE  INDEX "index_bookmarks_on_topic_id" ON "bookmarks" ("topic_id")[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "topics" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.9ms)[0m  [1mCREATE  INDEX "index_topics_on_user_id" ON "topics" ("user_id")[0m
+  [1m[35m (0.9ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "confirmation_token" varchar, "confirmed_at" datetime, "confirmation_sent_at" datetime) 
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+[0m
+  [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180221181207')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180221181135')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180220173610')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180220173223')[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "bookmarks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar, "topic_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.7ms)[0m  CREATE  INDEX "index_bookmarks_on_topic_id" ON "bookmarks" ("topic_id")
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE "topics" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.8ms)[0m  CREATE  INDEX "index_topics_on_user_id" ON "topics" ("user_id")
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "confirmation_token" varchar, "confirmed_at" datetime, "confirmation_sent_at" datetime) [0m
+  [1m[35m (0.8ms)[0m  CREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+[0m
+  [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (1.6ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180221181207')[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180221181135')
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180220173610')[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180220173223')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'sallie_kuphal@kunzegutkowski.io' LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "sallie_kuphal@kunzegutkowski.io"], ["encrypted_password", "$2a$11$7p/b0y1aTC/OWdARuPanq.E3A6eJ8fmqS0yPSFgXvAbcFny7T2xQq"], ["created_at", "2018-03-04 19:40:05.816246"], ["updated_at", "2018-03-04 19:40:05.816246"], ["confirmation_token", "MUxQnHiZ9x9RNUVy8XqS"], ["confirmation_sent_at", "2018-03-04 19:40:05.816499"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (6.7ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 226.6ms
+
+Sent mail to youremail@website.com (1081.6ms)
+Date: Sun, 04 Mar 2018 12:40:06 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: youremail@website.com
+Message-ID: <5a9c4b9610381_4fd53fd297c5e1b882320@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome sallie_kuphal@kunzegutkowski.io!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=MUxQnHiZ9x9RNUVy8XqS">Confirm my account</a></p>
+
+  [1m[36m (1.3ms)[0m  [1mCREATE TABLE "bookmarks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar, "topic_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (1.3ms)[0m  [1mCREATE  INDEX "index_bookmarks_on_topic_id" ON "bookmarks" ("topic_id")[0m
+  [1m[35m (1.4ms)[0m  CREATE TABLE "topics" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (1.2ms)[0m  [1mCREATE  INDEX "index_topics_on_user_id" ON "topics" ("user_id")[0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "confirmation_token" varchar, "confirmed_at" datetime, "confirmation_sent_at" datetime) 
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+[0m
+  [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.8ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180221181207')
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180221181135')[0m
+  [1m[35m (1.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180220173610')
+  [1m[36m (1.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180220173223')[0m
+  [1m[35m (1.2ms)[0m  CREATE TABLE "bookmarks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar, "topic_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.8ms)[0m  CREATE  INDEX "index_bookmarks_on_topic_id" ON "bookmarks" ("topic_id")
+  [1m[36m (1.1ms)[0m  [1mCREATE TABLE "topics" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (1.1ms)[0m  CREATE  INDEX "index_topics_on_user_id" ON "topics" ("user_id")
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "confirmation_token" varchar, "confirmed_at" datetime, "confirmation_sent_at" datetime) [0m
+  [1m[35m (1.6ms)[0m  CREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+[0m
+  [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (1.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180221181207')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180221181135')
+  [1m[36m (1.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180220173610')[0m
+  [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180220173223')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'jennyfer@powlowski.io' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "jennyfer@powlowski.io"], ["encrypted_password", "$2a$11$MD7FwfO7pNtNo3DDNdt.XOQuvG.hBqKDKzWbo7Sash6AmsL7rGBZy"], ["created_at", "2018-03-04 19:40:58.751650"], ["updated_at", "2018-03-04 19:40:58.751650"], ["confirmation_token", "hZebD_pe_1RYuU7fi1o6"], ["confirmation_sent_at", "2018-03-04 19:40:58.751911"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (5.7ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 229.0ms
+
+Sent mail to youremail@website.com (1465.6ms)
+Date: Sun, 04 Mar 2018 12:40:59 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: youremail@website.com
+Message-ID: <5a9c4bcbe0e_4fe43fd8ae8601ac92344@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome jennyfer@powlowski.io!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=hZebD_pe_1RYuU7fi1o6">Confirm my account</a></p>
+
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "bookmarks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar, "topic_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (1.0ms)[0m  [1mCREATE  INDEX "index_bookmarks_on_topic_id" ON "bookmarks" ("topic_id")[0m
+  [1m[35m (1.1ms)[0m  CREATE TABLE "topics" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (1.1ms)[0m  [1mCREATE  INDEX "index_topics_on_user_id" ON "topics" ("user_id")[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "confirmation_token" varchar, "confirmed_at" datetime, "confirmation_sent_at" datetime) 
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+[0m
+  [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180221181207')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180221181135')[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180220173610')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180220173223')[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "bookmarks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar, "topic_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.8ms)[0m  CREATE  INDEX "index_bookmarks_on_topic_id" ON "bookmarks" ("topic_id")
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE "topics" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.7ms)[0m  CREATE  INDEX "index_topics_on_user_id" ON "topics" ("user_id")
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "confirmation_token" varchar, "confirmed_at" datetime, "confirmation_sent_at" datetime) [0m
+  [1m[35m (0.8ms)[0m  CREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+[0m
+  [1m[35m (1.0ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (1.7ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (1.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180221181207')[0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180221181135')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180220173610')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180220173223')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'makenna_mcglynn@crona.info' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "makenna_mcglynn@crona.info"], ["encrypted_password", "$2a$11$1Po5s5smrTdtzkCkIqU6vutdIWxCEnBHH8bYUxTlrl/Megx7hDbcW"], ["created_at", "2018-03-04 19:46:16.021405"], ["updated_at", "2018-03-04 19:46:16.021405"], ["confirmation_token", "9FKuzHDe8wrzGbR1m727"], ["confirmation_sent_at", "2018-03-04 19:46:16.022008"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (10.6ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 220.6ms
+
+Sent mail to youremail@website.com (1332.4ms)
+Date: Sun, 04 Mar 2018 12:46:16 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: youremail@website.com
+Message-ID: <5a9c4d083ff47_4ffc3fc3ab05e1b04661@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome makenna_mcglynn@crona.info!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=9FKuzHDe8wrzGbR1m727">Confirm my account</a></p>
+
+  [1m[36m (1.1ms)[0m  [1mCREATE TABLE "bookmarks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar, "topic_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.9ms)[0m  [1mCREATE  INDEX "index_bookmarks_on_topic_id" ON "bookmarks" ("topic_id")[0m
+  [1m[35m (0.9ms)[0m  CREATE TABLE "topics" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.8ms)[0m  [1mCREATE  INDEX "index_topics_on_user_id" ON "topics" ("user_id")[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "confirmation_token" varchar, "confirmed_at" datetime, "confirmation_sent_at" datetime) 
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+
+  [1m[36m (1.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+[0m
+  [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.8ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180221181207')
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180221181135')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180220173610')
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180220173223')[0m
+  [1m[35m (0.9ms)[0m  CREATE TABLE "bookmarks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar, "topic_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.8ms)[0m  CREATE  INDEX "index_bookmarks_on_topic_id" ON "bookmarks" ("topic_id")
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE "topics" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.7ms)[0m  CREATE  INDEX "index_topics_on_user_id" ON "topics" ("user_id")
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "confirmation_token" varchar, "confirmed_at" datetime, "confirmation_sent_at" datetime) [0m
+  [1m[35m (1.0ms)[0m  CREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+[0m
+  [1m[35m (1.4ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+
+  [1m[36m (1.2ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (1.1ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.7ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180221181207')[0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180221181135')
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180220173610')[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180220173223')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'constance@kingmiller.io' LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "constance@kingmiller.io"], ["encrypted_password", "$2a$11$W.rJ0ppizrKZOCK398R/A.8Qvpo1SuQJBhBQmu8gWY.odb1e5.wpS"], ["created_at", "2018-03-05 00:02:24.852830"], ["updated_at", "2018-03-05 00:02:24.852830"], ["confirmation_token", "gKt22V1HMDg6Q1-d1sHJ"], ["confirmation_sent_at", "2018-03-05 00:02:24.853121"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (6.0ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 226.0ms
+
+Sent mail to r.z.travis@gmail.com (1267.6ms)
+Date: Sun, 04 Mar 2018 17:02:25 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: r.z.travis@gmail.com
+Message-ID: <5a9c8911180e0_51b93fe0658601ac1e9@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome constance@kingmiller.io!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=gKt22V1HMDg6Q1-d1sHJ">Confirm my account</a></p>
+
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'guido_keeling@collier.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "guido_keeling@collier.com"], ["encrypted_password", "$2a$11$.X5Ixy0z/vjTxY2yeBI/Au.PaNj1cIENYCrCqW7AmrmXW.ifmu3kq"], ["created_at", "2018-03-05 00:02:26.484251"], ["updated_at", "2018-03-05 00:02:26.484251"], ["confirmation_token", "KGPUEjsQjSWAjUM4ZzA5"], ["confirmation_sent_at", "2018-03-05 00:02:26.484418"]]
+  [1m[36m (6.5ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (2.6ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 21.7ms
+
+Sent mail to r.z.travis@gmail.com (1309.1ms)
+Date: Sun, 04 Mar 2018 17:02:26 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: r.z.travis@gmail.com
+Message-ID: <5a9c89127dc25_51b93fe0658601ac2d8@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome guido_keeling@collier.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=KGPUEjsQjSWAjUM4ZzA5">Confirm my account</a></p>
+
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'garth_feil@armstrong.biz' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "garth_feil@armstrong.biz"], ["encrypted_password", "$2a$11$9IrwItq0HWY4SLeaB4mELOSIbYV3bVIOVcbs5egfkldUUb8uyBXPm"], ["created_at", "2018-03-05 00:02:27.943657"], ["updated_at", "2018-03-05 00:02:27.943657"], ["confirmation_token", "oe1_DrBcYD-suxUv4rpA"], ["confirmation_sent_at", "2018-03-05 00:02:27.943817"]]
+  [1m[36m (6.3ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (2.1ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 19.9ms
+
+Sent mail to r.z.travis@gmail.com (1312.4ms)
+Date: Sun, 04 Mar 2018 17:02:27 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: r.z.travis@gmail.com
+Message-ID: <5a9c8913ed79c_51b93fe0658601ac3d8@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome garth_feil@armstrong.biz!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=oe1_DrBcYD-suxUv4rpA">Confirm my account</a></p>
+
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'antonette@hartmann.co' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "antonette@hartmann.co"], ["encrypted_password", "$2a$11$De5.wRPHhytS2cntys/M9uN65nLt694WTVg7NfvG0o.N1/cKxerNi"], ["created_at", "2018-03-05 00:02:29.403201"], ["updated_at", "2018-03-05 00:02:29.403201"], ["confirmation_token", "oNtBkEJ37hGSNYBN19z_"], ["confirmation_sent_at", "2018-03-05 00:02:29.403481"]]
+  [1m[36m (7.0ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (1.9ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 21.9ms
+
+Sent mail to r.z.travis@gmail.com (1248.9ms)
+Date: Sun, 04 Mar 2018 17:02:29 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: r.z.travis@gmail.com
+Message-ID: <5a9c89156a515_51b93fe0658601ac4f9@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome antonette@hartmann.co!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=oNtBkEJ37hGSNYBN19z_">Confirm my account</a></p>
+
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vicente@hackett.io' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "vicente@hackett.io"], ["encrypted_password", "$2a$11$6vsFmHONz8frcLBx38D6FuiliNBPq7kOMc0mBspKYye9A3oXHP6eW"], ["created_at", "2018-03-05 00:02:30.806145"], ["updated_at", "2018-03-05 00:02:30.806145"], ["confirmation_token", "jeE6QpnhFQKxTuJ43CiN"], ["confirmation_sent_at", "2018-03-05 00:02:30.806437"]]
+  [1m[36m (6.3ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (1.8ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 19.2ms
+
+Sent mail to r.z.travis@gmail.com (1310.2ms)
+Date: Sun, 04 Mar 2018 17:02:30 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: r.z.travis@gmail.com
+Message-ID: <5a9c8916cbbf1_51b93fe0658601ac5ca@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome vicente@hackett.io!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=jeE6QpnhFQKxTuJ43CiN">Confirm my account</a></p>
+
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (1.1ms)[0m  [1mCREATE TABLE "bookmarks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar, "topic_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (1.1ms)[0m  [1mCREATE  INDEX "index_bookmarks_on_topic_id" ON "bookmarks" ("topic_id")[0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "topics" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mCREATE  INDEX "index_topics_on_user_id" ON "topics" ("user_id")[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "confirmation_token" varchar, "confirmed_at" datetime, "confirmation_sent_at" datetime) 
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+[0m
+  [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180221181207')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180221181135')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180220173610')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180220173223')[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "bookmarks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar, "topic_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.9ms)[0m  CREATE  INDEX "index_bookmarks_on_topic_id" ON "bookmarks" ("topic_id")
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE "topics" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.7ms)[0m  CREATE  INDEX "index_topics_on_user_id" ON "topics" ("user_id")
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "confirmation_token" varchar, "confirmed_at" datetime, "confirmation_sent_at" datetime) [0m
+  [1m[35m (0.7ms)[0m  CREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+[0m
+  [1m[35m (0.8ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+
+  [1m[36m (0.7ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.7ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180221181207')[0m
+  [1m[35m (1.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180221181135')
+  [1m[36m (1.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180220173610')[0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180220173223')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'adrian.johnson@erdman.net' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "adrian.johnson@erdman.net"], ["encrypted_password", "$2a$11$66gU57sVVjg5Fb3amrZTYOI3BF0Uz1Xsd.6IOy.p5cOjiw5hYeLU2"], ["created_at", "2018-03-05 00:12:14.370310"], ["updated_at", "2018-03-05 00:12:14.370310"], ["confirmation_token", "1L6RvHG_K9sgL_kx--PT"], ["confirmation_sent_at", "2018-03-05 00:12:14.370579"]]
+  [1m[36m (1.6ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (7.3ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 223.6ms
+
+Sent mail to r.z.travis@gmail.com (1280.5ms)
+Date: Sun, 04 Mar 2018 17:12:14 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: r.z.travis@gmail.com
+Message-ID: <5a9c8b5e9683a_51cf3fe61785e1b0186fd@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome adrian.johnson@erdman.net!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=1L6RvHG_K9sgL_kx--PT">Confirm my account</a></p>
+
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'kaelyn@bechtelar.co' LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "kaelyn@bechtelar.co"], ["encrypted_password", "$2a$11$MxiVLpnyTUbSG7hFJHspz.wmTLI8mgps8rztfQqfTz4QTD7tvi27m"], ["created_at", "2018-03-05 00:12:16.012839"], ["updated_at", "2018-03-05 00:12:16.012839"], ["confirmation_token", "uZUGQYB7WyPM2Jk5Fc_G"], ["confirmation_sent_at", "2018-03-05 00:12:16.013036"]]
+  [1m[36m (6.7ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (1.8ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 20.5ms
+
+Sent mail to r.z.travis@gmail.com (1051.7ms)
+Date: Sun, 04 Mar 2018 17:12:16 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: r.z.travis@gmail.com
+Message-ID: <5a9c8b60aad2_51cf3fe61785e1b018742@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome kaelyn@bechtelar.co!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=uZUGQYB7WyPM2Jk5Fc_G">Confirm my account</a></p>
+
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'braxton.labadie@hahn.biz' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "braxton.labadie@hahn.biz"], ["encrypted_password", "$2a$11$H62so2OgTI5uOSJG77ubFOghKbA.NYh2jieYJOXlTNVUPCm3BJW1u"], ["created_at", "2018-03-05 00:12:17.212246"], ["updated_at", "2018-03-05 00:12:17.212246"], ["confirmation_token", "cxT9sS4QdGLkeFTCaFh9"], ["confirmation_sent_at", "2018-03-05 00:12:17.212402"]]
+  [1m[36m (6.8ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (2.3ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 21.2ms
+
+Sent mail to r.z.travis@gmail.com (1192.7ms)
+Date: Sun, 04 Mar 2018 17:12:17 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: r.z.travis@gmail.com
+Message-ID: <5a9c8b613b57a_51cf3fe61785e1b018833@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome braxton.labadie@hahn.biz!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=cxT9sS4QdGLkeFTCaFh9">Confirm my account</a></p>
+
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'rowland.leannon@stammboehm.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "rowland.leannon@stammboehm.com"], ["encrypted_password", "$2a$11$yPD68NISCjPd208XkNv6dO4FnL03v.NNtoRVUxgGjWL9nPJbGCLBS"], ["created_at", "2018-03-05 00:12:18.546445"], ["updated_at", "2018-03-05 00:12:18.546445"], ["confirmation_token", "AKEGgyWx-ijLErpSZDqW"], ["confirmation_sent_at", "2018-03-05 00:12:18.546637"]]
+  [1m[36m (6.7ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (1.9ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 19.9ms
+
+Sent mail to r.z.travis@gmail.com (1180.1ms)
+Date: Sun, 04 Mar 2018 17:12:18 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: r.z.travis@gmail.com
+Message-ID: <5a9c8b628c903_51cf3fe61785e1b0189c9@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome rowland.leannon@stammboehm.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=AKEGgyWx-ijLErpSZDqW">Confirm my account</a></p>
+
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'deanna_osinski@mantenolan.info' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "deanna_osinski@mantenolan.info"], ["encrypted_password", "$2a$11$sygnD3NauEgX9b0xPUjz0.6/MAvQvlgDRC5NiNUPgkHxaoK75dTQS"], ["created_at", "2018-03-05 00:12:19.874817"], ["updated_at", "2018-03-05 00:12:19.874817"], ["confirmation_token", "bzyE7Kq2EnsmCM1jWTH1"], ["confirmation_sent_at", "2018-03-05 00:12:19.874973"]]
+  [1m[36m (6.5ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (2.6ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 20.9ms
+
+Sent mail to r.z.travis@gmail.com (950.7ms)
+Date: Sun, 04 Mar 2018 17:12:19 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: r.z.travis@gmail.com
+Message-ID: <5a9c8b63dd125_51cf3fe61785e1b019088@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome deanna_osinski@mantenolan.info!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=bzyE7Kq2EnsmCM1jWTH1">Confirm my account</a></p>
+
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "topics" ("user_id", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["user_id", 5], ["title", "Holmium"], ["created_at", "2018-03-05 00:12:20.879804"], ["updated_at", "2018-03-05 00:12:20.879804"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "topics" ("user_id", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 4], ["title", "Antimony"], ["created_at", "2018-03-05 00:12:20.882845"], ["updated_at", "2018-03-05 00:12:20.882845"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "topics" ("user_id", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["user_id", 1], ["title", "Chlorine"], ["created_at", "2018-03-05 00:12:20.885787"], ["updated_at", "2018-03-05 00:12:20.885787"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "topics" ("user_id", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 2], ["title", "Cerium"], ["created_at", "2018-03-05 00:12:20.888365"], ["updated_at", "2018-03-05 00:12:20.888365"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "topics" ("user_id", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["user_id", 5], ["title", "Lutetium"], ["created_at", "2018-03-05 00:12:20.890978"], ["updated_at", "2018-03-05 00:12:20.890978"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[36m (6.9ms)[0m  [1mCREATE TABLE "bookmarks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar, "topic_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (1.1ms)[0m  [1mCREATE  INDEX "index_bookmarks_on_topic_id" ON "bookmarks" ("topic_id")[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "topics" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mCREATE  INDEX "index_topics_on_user_id" ON "topics" ("user_id")[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "confirmation_token" varchar, "confirmed_at" datetime, "confirmation_sent_at" datetime) 
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+[0m
+  [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (1.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (1.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180221181207')
+  [1m[36m (1.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180221181135')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180220173610')
+  [1m[36m (1.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180220173223')[0m
+  [1m[35m (1.3ms)[0m  CREATE TABLE "bookmarks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar, "topic_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.0ms)[0m  CREATE  INDEX "index_bookmarks_on_topic_id" ON "bookmarks" ("topic_id")
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "topics" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (1.6ms)[0m  CREATE  INDEX "index_topics_on_user_id" ON "topics" ("user_id")
+  [1m[36m (1.1ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "confirmation_token" varchar, "confirmed_at" datetime, "confirmation_sent_at" datetime) [0m
+  [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+[0m
+  [1m[35m (1.0ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.9ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180221181207')[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180221181135')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180220173610')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180220173223')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'velva_oreilly@mckenzieaufderhar.org' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "velva_oreilly@mckenzieaufderhar.org"], ["encrypted_password", "$2a$11$6CtXH/0eOSBslDxVkseW2ONMc5N8Blo.NkLS.aykSpEQCAQeh6Bo6"], ["created_at", "2018-03-05 00:13:29.510795"], ["updated_at", "2018-03-05 00:13:29.510795"], ["confirmation_token", "RyBttZx7v6b4i2Wqmgz1"], ["confirmation_sent_at", "2018-03-05 00:13:29.511258"]]
+  [1m[36m (7.1ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (7.1ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 207.8ms
+
+Sent mail to r.z.travis@gmail.com (1045.3ms)
+Date: Sun, 04 Mar 2018 17:13:29 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: r.z.travis@gmail.com
+Message-ID: <5a9c8ba9b5135_51dc3fd144c5e1a8844fe@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome velva_oreilly@mckenzieaufderhar.org!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=RyBttZx7v6b4i2Wqmgz1">Confirm my account</a></p>
+
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'bryon@hackettwolf.name' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "bryon@hackettwolf.name"], ["encrypted_password", "$2a$11$lG1.LMTi0A14bjEcVM0BwufbectHxpoTws8OhPTqJypw6A7/KjEYW"], ["created_at", "2018-03-05 00:13:30.908100"], ["updated_at", "2018-03-05 00:13:30.908100"], ["confirmation_token", "sDUUJESiBymakcnE1PHo"], ["confirmation_sent_at", "2018-03-05 00:13:30.908276"]]
+  [1m[36m (7.0ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (1.8ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 20.1ms
+
+Sent mail to r.z.travis@gmail.com (999.0ms)
+Date: Sun, 04 Mar 2018 17:13:30 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: r.z.travis@gmail.com
+Message-ID: <5a9c8baae5082_51dc3fd144c5e1a884517@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome bryon@hackettwolf.name!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=sDUUJESiBymakcnE1PHo">Confirm my account</a></p>
+
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'isaiah_price@monahankirlin.biz' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "isaiah_price@monahankirlin.biz"], ["encrypted_password", "$2a$11$GVs5rXcnxi5/m2J7YNuN9OqHjY0P4yQzMagu7hdp/1HJHI0.gsi8u"], ["created_at", "2018-03-05 00:13:32.058814"], ["updated_at", "2018-03-05 00:13:32.058814"], ["confirmation_token", "RabTYPWxbLgq17GGwgsm"], ["confirmation_sent_at", "2018-03-05 00:13:32.059074"]]
+  [1m[36m (6.5ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (2.1ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 21.7ms
+
+Sent mail to r.z.travis@gmail.com (926.7ms)
+Date: Sun, 04 Mar 2018 17:13:32 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: r.z.travis@gmail.com
+Message-ID: <5a9c8bac15feb_51dc3fd144c5e1a8846b@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome isaiah_price@monahankirlin.biz!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=RabTYPWxbLgq17GGwgsm">Confirm my account</a></p>
+
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'celia.kovacek@collins.info' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "celia.kovacek@collins.info"], ["encrypted_password", "$2a$11$0L0wo/q4IWfQgZJqoQT2Du.s7fYgnNDbCCwbz54Hrm8hTvutrrrFi"], ["created_at", "2018-03-05 00:13:33.141192"], ["updated_at", "2018-03-05 00:13:33.141192"], ["confirmation_token", "r-y3JyiBHCksws4W7rjN"], ["confirmation_sent_at", "2018-03-05 00:13:33.141353"]]
+  [1m[36m (6.9ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (2.0ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 21.6ms
+
+Sent mail to r.z.travis@gmail.com (1024.5ms)
+Date: Sun, 04 Mar 2018 17:13:33 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: r.z.travis@gmail.com
+Message-ID: <5a9c8bad2a0f3_51dc3fd144c5e1a884715@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome celia.kovacek@collins.info!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=r-y3JyiBHCksws4W7rjN">Confirm my account</a></p>
+
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'javon.mayer@padberg.net' LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "javon.mayer@padberg.net"], ["encrypted_password", "$2a$11$uXVPnaEn6fEMAqFjy/.KAOly0KIcQGpFaPUl2yy3RFONbc4SKkRJa"], ["created_at", "2018-03-05 00:13:34.322674"], ["updated_at", "2018-03-05 00:13:34.322674"], ["confirmation_token", "QLwzArWCBpN99HZyVt9q"], ["confirmation_sent_at", "2018-03-05 00:13:34.323017"]]
+  [1m[36m (6.8ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (2.4ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 21.4ms
+
+Sent mail to r.z.travis@gmail.com (1041.7ms)
+Date: Sun, 04 Mar 2018 17:13:34 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: r.z.travis@gmail.com
+Message-ID: <5a9c8bae56b7b_51dc3fd144c5e1a884846@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome javon.mayer@padberg.net!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=QLwzArWCBpN99HZyVt9q">Confirm my account</a></p>
+
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "topics" ("user_id", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["user_id", 3], ["title", "Zinc"], ["created_at", "2018-03-05 00:13:35.410098"], ["updated_at", "2018-03-05 00:13:35.410098"]]
+  [1m[36m (6.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "topics" ("user_id", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 2], ["title", "Antimony"], ["created_at", "2018-03-05 00:13:35.418888"], ["updated_at", "2018-03-05 00:13:35.418888"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "topics" ("user_id", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["user_id", 1], ["title", "Potassium"], ["created_at", "2018-03-05 00:13:35.421527"], ["updated_at", "2018-03-05 00:13:35.421527"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "topics" ("user_id", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 5], ["title", "Boron"], ["created_at", "2018-03-05 00:13:35.424610"], ["updated_at", "2018-03-05 00:13:35.424610"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "topics" ("user_id", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["user_id", 3], ["title", "Neptunium"], ["created_at", "2018-03-05 00:13:35.427219"], ["updated_at", "2018-03-05 00:13:35.427219"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mTopic Load (0.1ms)[0m  SELECT "topics".* FROM "topics"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "bookmarks" ("topic_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["topic_id", 3], ["url", "http://hoeger.com/eldridge_dubuque"], ["created_at", "2018-03-05 00:13:35.435324"], ["updated_at", "2018-03-05 00:13:35.435324"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "bookmarks" ("topic_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["topic_id", 3], ["url", "http://pfeffer.com/malika.mcclure"], ["created_at", "2018-03-05 00:13:35.438259"], ["updated_at", "2018-03-05 00:13:35.438259"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "bookmarks" ("topic_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["topic_id", 3], ["url", "http://kemmer.com/kaelyn.langosh"], ["created_at", "2018-03-05 00:13:35.440667"], ["updated_at", "2018-03-05 00:13:35.440667"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "bookmarks" ("topic_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["topic_id", 5], ["url", "http://wehner.com/leopold.rosenbaum"], ["created_at", "2018-03-05 00:13:35.443101"], ["updated_at", "2018-03-05 00:13:35.443101"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "bookmarks" ("topic_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["topic_id", 4], ["url", "http://stehr.com/darron.borer"], ["created_at", "2018-03-05 00:13:35.445566"], ["updated_at", "2018-03-05 00:13:35.445566"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "bookmarks" ("topic_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["topic_id", 4], ["url", "http://ferry.info/dayne_waelchi"], ["created_at", "2018-03-05 00:13:35.448278"], ["updated_at", "2018-03-05 00:13:35.448278"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "bookmarks" ("topic_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["topic_id", 2], ["url", "http://olsonfarrell.biz/rebeca.gleason"], ["created_at", "2018-03-05 00:13:35.451003"], ["updated_at", "2018-03-05 00:13:35.451003"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "bookmarks" ("topic_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["topic_id", 3], ["url", "http://okuneva.org/marjolaine_schmeler"], ["created_at", "2018-03-05 00:13:35.453860"], ["updated_at", "2018-03-05 00:13:35.453860"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "bookmarks" ("topic_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["topic_id", 3], ["url", "http://ruel.info/garrison"], ["created_at", "2018-03-05 00:13:35.456609"], ["updated_at", "2018-03-05 00:13:35.456609"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "bookmarks" ("topic_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["topic_id", 3], ["url", "http://grimesryan.net/ro_pollich"], ["created_at", "2018-03-05 00:13:35.459276"], ["updated_at", "2018-03-05 00:13:35.459276"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "bookmarks" ("topic_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["topic_id", 2], ["url", "http://cole.co/trevor_schuster"], ["created_at", "2018-03-05 00:13:35.461779"], ["updated_at", "2018-03-05 00:13:35.461779"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "bookmarks" ("topic_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["topic_id", 1], ["url", "http://shieldsmarks.name/aiyana.bahringer"], ["created_at", "2018-03-05 00:13:35.464053"], ["updated_at", "2018-03-05 00:13:35.464053"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "bookmarks" ("topic_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["topic_id", 4], ["url", "http://ondricka.org/miracle"], ["created_at", "2018-03-05 00:13:35.466446"], ["updated_at", "2018-03-05 00:13:35.466446"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "bookmarks" ("topic_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["topic_id", 5], ["url", "http://smith.org/sasha_beer"], ["created_at", "2018-03-05 00:13:35.468649"], ["updated_at", "2018-03-05 00:13:35.468649"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "bookmarks" ("topic_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["topic_id", 2], ["url", "http://bergehahn.com/ayden.fay"], ["created_at", "2018-03-05 00:13:35.471193"], ["updated_at", "2018-03-05 00:13:35.471193"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "topics"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "bookmarks"
+
+
+Started GET "/users/confirmation?confirmation_token=QLwzArWCBpN99HZyVt9q" for ::1 at 2018-03-04 17:13:54 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::ConfirmationsController#show as HTML
+  Parameters: {"confirmation_token"=>"QLwzArWCBpN99HZyVt9q"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."confirmation_token" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["confirmation_token", "QLwzArWCBpN99HZyVt9q"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "users" SET "confirmed_at" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["confirmed_at", "2018-03-05 00:13:54.814063"], ["updated_at", "2018-03-05 00:13:54.814640"], ["id", 5]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 473ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-03-04 17:13:55 -0700
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (10.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (38.5ms)
+Completed 200 OK in 1968ms (Views: 1965.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/confirmation?confirmation_token=r-y3JyiBHCksws4W7rjN" for ::1 at 2018-03-04 17:14:05 -0700
+Processing by Devise::ConfirmationsController#show as HTML
+  Parameters: {"confirmation_token"=>"r-y3JyiBHCksws4W7rjN"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."confirmation_token" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["confirmation_token", "r-y3JyiBHCksws4W7rjN"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "users" SET "confirmed_at" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["confirmed_at", "2018-03-05 00:14:05.187817"], ["updated_at", "2018-03-05 00:14:05.188842"], ["id", 4]]
+  [1m[36m (6.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 19ms (ActiveRecord: 7.4ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-03-04 17:14:05 -0700
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (6.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 50ms (Views: 49.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/confirmation?confirmation_token=RabTYPWxbLgq17GGwgsm" for ::1 at 2018-03-04 17:14:10 -0700
+Processing by Devise::ConfirmationsController#show as HTML
+  Parameters: {"confirmation_token"=>"RabTYPWxbLgq17GGwgsm"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."confirmation_token" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["confirmation_token", "RabTYPWxbLgq17GGwgsm"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  UPDATE "users" SET "confirmed_at" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["confirmed_at", "2018-03-05 00:14:10.926106"], ["updated_at", "2018-03-05 00:14:10.926673"], ["id", 3]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 15ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-03-04 17:14:10 -0700
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (9.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (15.8ms)
+Completed 200 OK in 59ms (Views: 58.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/confirmation?confirmation_token=sDUUJESiBymakcnE1PHo" for ::1 at 2018-03-04 17:14:16 -0700
+Processing by Devise::ConfirmationsController#show as HTML
+  Parameters: {"confirmation_token"=>"sDUUJESiBymakcnE1PHo"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."confirmation_token" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["confirmation_token", "sDUUJESiBymakcnE1PHo"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  UPDATE "users" SET "confirmed_at" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["confirmed_at", "2018-03-05 00:14:16.172694"], ["updated_at", "2018-03-05 00:14:16.173387"], ["id", 2]]
+  [1m[36m (6.6ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 16ms (ActiveRecord: 7.4ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-03-04 17:14:16 -0700
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (9.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 56ms (Views: 54.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/confirmation?confirmation_token=RyBttZx7v6b4i2Wqmgz1" for ::1 at 2018-03-04 17:14:19 -0700
+Processing by Devise::ConfirmationsController#show as HTML
+  Parameters: {"confirmation_token"=>"RyBttZx7v6b4i2Wqmgz1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."confirmation_token" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["confirmation_token", "RyBttZx7v6b4i2Wqmgz1"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "confirmed_at" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["confirmed_at", "2018-03-05 00:14:19.827754"], ["updated_at", "2018-03-05 00:14:19.828680"], ["id", 1]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 10ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-03-04 17:14:19 -0700
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (9.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (16.5ms)
+Completed 200 OK in 61ms (Views: 60.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2018-03-04 17:14:26 -0700
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (4.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (15.1ms)
+Completed 200 OK in 63ms (Views: 61.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2018-03-04 17:14:33 -0700
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0eIQ7UTz870vxHLm3xFfp2axaJ07fmAI7LC2WYNFgVCfETVZaHPxMnnKwG19DjhI3I1yh+yYuSw7QzjVvln7hw==", "user"=>{"email"=>"r.z.travis@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'r.z.travis@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "r.z.travis@gmail.com"], ["encrypted_password", "$2a$11$YuBLOC1mYDdz.QrQ23JpvePlEMRanSm5RNw6WNJ.vxOwHs1PwAt6O"], ["created_at", "2018-03-05 00:14:33.566625"], ["updated_at", "2018-03-05 00:14:33.566625"], ["confirmation_token", "yxzuhvF7Myow1B4SZhtx"], ["confirmation_sent_at", "2018-03-05 00:14:33.566852"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (2.5ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 242.2ms
+
+Sent mail to r.z.travis@gmail.com (1050.8ms)
+Date: Sun, 04 Mar 2018 17:14:33 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: r.z.travis@gmail.com
+Message-ID: <5a9c8be9c9a35_51e73ffb2de48a28683ac@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome r.z.travis@gmail.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=yxzuhvF7Myow1B4SZhtx">Confirm my account</a></p>
+
+Redirected to http://localhost:3000/
+Completed 302 Found in 1471ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/" for ::1 at 2018-03-04 17:14:34 -0700
+Processing by WelcomeController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-03-04 17:14:34 -0700
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (2.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 36ms (Views: 35.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/confirmation?confirmation_token=yxzuhvF7Myow1B4SZhtx" for ::1 at 2018-03-04 17:14:42 -0700
+Processing by Devise::ConfirmationsController#show as HTML
+  Parameters: {"confirmation_token"=>"yxzuhvF7Myow1B4SZhtx"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."confirmation_token" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["confirmation_token", "yxzuhvF7Myow1B4SZhtx"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "confirmed_at" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["confirmed_at", "2018-03-05 00:14:42.994887"], ["updated_at", "2018-03-05 00:14:42.995472"], ["id", 6]]
+  [1m[36m (2.8ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 11ms (ActiveRecord: 3.4ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-03-04 17:14:43 -0700
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (14.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (20.9ms)
+Completed 200 OK in 61ms (Views: 58.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2018-03-04 17:29:01 -0700
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LRcXqucyCzlwY76t1nKOfWjWg5+jnTcVakW8n+AnCstj5DIey7IJtiZtDCZ0bemS0uqZhXR77jG9tjIT3TtwHA==", "user"=>{"email"=>"r.z.travis@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "r.z.travis@gmail.com"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2018-03-05 00:29:01.454666"], ["current_sign_in_at", "2018-03-05 00:29:01.454666"], ["last_sign_in_ip", "::1"], ["current_sign_in_ip", "::1"], ["sign_in_count", 1], ["updated_at", "2018-03-05 00:29:01.455377"], ["id", 6]]
+  [1m[36m (7.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 141ms (ActiveRecord: 7.7ms)
+
+
+Started GET "/" for ::1 at 2018-03-04 17:29:01 -0700
+Processing by WelcomeController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  Rendered welcome/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 47ms (Views: 46.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/topics" for ::1 at 2018-03-04 17:29:02 -0700
+Processing by TopicsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mTopic Load (0.2ms)[0m  SELECT "topics".* FROM "topics"
+  [1m[36mBookmark Load (0.3ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks"[0m
+  Rendered topics/index.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 47ms (Views: 36.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/topics" for ::1 at 2018-03-04 17:29:53 -0700
+Processing by TopicsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT "topics".* FROM "topics"[0m
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT "bookmarks".* FROM "bookmarks"
+  Rendered topics/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 1371ms (Views: 1369.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/topics.self-a3d067ef4213f44971c2f561ed32662e8cc3c9d173886db0bd0cfaf9dae0401e.css?body=1" for ::1 at 2018-03-04 17:29:54 -0700
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", nil]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", nil]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT 1  [["email", "r.z.travis@gmail.com"]]
