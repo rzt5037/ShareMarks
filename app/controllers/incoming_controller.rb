@@ -15,7 +15,7 @@ class IncomingController < ApplicationController
       @url = params["body-plain".chomp]
     # Check if user is nil, if so, create and save a new user
       unless @user
-        @user = User.create!(:email => params[:sender])
+        @user = User.create!(:email => params[:sender], :password => "password", :password_confirmation => "password", :confirmed_at => Time.now)
       end
     # Check if the topic is nil, if so, create and save a new topic
       unless @topic

@@ -8967,3 +8967,12 @@ Processing by TopicsController#index as HTML
   Rendered topics/index.html.erb within layouts/application (2.6ms)
   [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
 Completed 200 OK in 51ms (Views: 50.2ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'something@something.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'rawr@rawr.com' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "confirmed_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "rawr@rawr.com"], ["encrypted_password", "$2a$11$vx.TG7Dsfy/n7jmbLPCoUuaV.ypTz3SqrvgDu0IklL3bOA4I..TGK"], ["confirmed_at", "2018-03-05 03:17:47.305729"], ["created_at", "2018-03-05 03:17:47.437136"], ["updated_at", "2018-03-05 03:17:47.437136"]]
+  [1m[35m (6.2ms)[0m  commit transaction
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1[0m
