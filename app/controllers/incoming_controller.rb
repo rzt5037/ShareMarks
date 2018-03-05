@@ -12,7 +12,7 @@ class IncomingController < ApplicationController
     # Find the topic by using params[:subject]
       @topic = Topic.find_by(:title => params[:subject])
     # Assign the url to a variable after retreiving it from params["body-plain"]
-      @url = params["body-plain".chomp]
+      @url = params["body-plain"]
     # Check if user is nil, if so, create and save a new user
       unless @user
         @user = User.create!(:email => params[:sender], :password => "password", :password_confirmation => "password", :confirmed_at => Time.now)
@@ -22,7 +22,7 @@ class IncomingController < ApplicationController
         @topic = Topic.create!(:title => params[:subject], :user_id => @user.id)
       end
     # Now that you're sure you have a valid user and topic, build and save a new bookmark
-      Bookmark.create!(:url => @url, :topic_id => @topic.id)
+      Bookmark.create!(:url => @url.chomp, :topic_id => @topic.id)
     # Assuming all went well.
     head 200
   end
