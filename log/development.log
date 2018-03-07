@@ -8976,3 +8976,1973 @@ Completed 200 OK in 51ms (Views: 50.2ms | ActiveRecord: 0.5ms)
   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "confirmed_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "rawr@rawr.com"], ["encrypted_password", "$2a$11$vx.TG7Dsfy/n7jmbLPCoUuaV.ypTz3SqrvgDu0IklL3bOA4I..TGK"], ["confirmed_at", "2018-03-05 03:17:47.305729"], ["created_at", "2018-03-05 03:17:47.437136"], ["updated_at", "2018-03-05 03:17:47.437136"]]
   [1m[35m (6.2ms)[0m  commit transaction
   [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1[0m
+
+
+Started GET "/" for ::1 at 2018-03-07 13:01:30 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 371ms (Views: 362.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/topics" for ::1 at 2018-03-07 13:01:32 -0700
+Processing by TopicsController#index as HTML
+  [1m[35mTopic Load (0.5ms)[0m  SELECT "topics".* FROM "topics"
+  [1m[36mBookmark Load (0.5ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks"[0m
+  Rendered topics/index.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 82ms (Views: 64.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/topics/2" for ::1 at 2018-03-07 13:01:36 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mTopic Load (0.2ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mBookmark Load (0.5ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?[0m  [["topic_id", 2]]
+  Rendered topics/show.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 74ms (Views: 49.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/topics/2" for ::1 at 2018-03-07 13:03:05 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?[0m  [["topic_id", 2]]
+  Rendered topics/show.html.erb within layouts/application (29.0ms)
+Completed 401 Unauthorized in 36ms (ActiveRecord: 0.2ms)
+
+ActionView::Template::Error (undefined method `destroy?' for #<#<Class:0x007ffc9f6a1be0>:0x007ffca6813fa8>):
+    11:     <% @bookmarks.each do |bookmark| %>
+    12:       <div class="bookmark-holder">
+    13:         <div class="pull-right">
+    14:           <% if destroy? %>
+    15:             <%= link_to "", topic_bookmark_path(bookmark.topic_id, bookmark), method: :delete, class: 'glyphicon glyphicon-remove-sign pull-right text-danger', data: {confirm: 'Are you sure you want to delete this bookmark?'} %>
+    16:           <% end %>
+    17:           <br />
+  app/views/topics/show.html.erb:14:in `block in _app_views_topics_show_html_erb___1978650677419417610_70361550984880'
+  app/views/topics/show.html.erb:11:in `_app_views_topics_show_html_erb___1978650677419417610_70361550984880'
+
+
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.5ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (72.8ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (506.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (597.0ms)
+
+
+Started GET "/topics/2" for ::1 at 2018-03-07 13:04:59 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mTopic Load (0.4ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mBookmark Load (1.0ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?[0m  [["topic_id", 2]]
+  Rendered topics/show.html.erb within layouts/application (15.9ms)
+Completed 401 Unauthorized in 33ms (ActiveRecord: 2.1ms)
+
+ActionView::Template::Error (undefined method `destroy?' for #<#<Class:0x007ffca88ce6d0>:0x007ffca4695f70>):
+    11:     <% @bookmarks.each do |bookmark| %>
+    12:       <div class="bookmark-holder">
+    13:         <div class="pull-right">
+    14:           <% if destroy? %>
+    15:             <%= link_to "", topic_bookmark_path(bookmark.topic_id, bookmark), method: :delete, class: 'glyphicon glyphicon-remove-sign pull-right text-danger', data: {confirm: 'Are you sure you want to delete this bookmark?'} %>
+    16:           <% end %>
+    17:           <br />
+  app/views/topics/show.html.erb:14:in `block in _app_views_topics_show_html_erb___1978650677419417610_70361550984880'
+  app/views/topics/show.html.erb:11:in `_app_views_topics_show_html_erb___1978650677419417610_70361550984880'
+
+
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.2ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.5ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (74.0ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (61.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (132.3ms)
+
+
+Started GET "/topics/2" for ::1 at 2018-03-07 13:10:33 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mTopic Load (0.5ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mBookmark Load (0.9ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?[0m  [["topic_id", 2]]
+  Rendered topics/show.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 52ms (Views: 41.0ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-03-07 13:10:37 -0700
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (6.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (33.9ms)
+Completed 200 OK in 80ms (Views: 67.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2018-03-07 13:10:42 -0700
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fc7T04JqUzV9I6/evbRag3MT327Zuu94uiXcPl1M9iV7y3mIQpG2LikQnPPHG7veyd2Sy7I3MRvyKetVR9G+OA==", "user"=>{"email"=>"r.z.travis@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "r.z.travis@gmail.com"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2018-03-05 02:25:50.764167"], ["current_sign_in_at", "2018-03-07 20:10:42.555429"], ["sign_in_count", 3], ["updated_at", "2018-03-07 20:10:42.556503"], ["id", 6]]
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 155ms (ActiveRecord: 6.2ms)
+
+
+Started GET "/" for ::1 at 2018-03-07 13:10:42 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.2ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+Completed 200 OK in 30ms (Views: 29.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/topics" for ::1 at 2018-03-07 13:10:44 -0700
+Processing by TopicsController#index as HTML
+  [1m[36mTopic Load (0.3ms)[0m  [1mSELECT "topics".* FROM "topics"[0m
+  [1m[35mBookmark Load (0.2ms)[0m  SELECT "bookmarks".* FROM "bookmarks"
+  Rendered topics/index.html.erb within layouts/application (3.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+Completed 200 OK in 39ms (Views: 37.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/topics/2" for ::1 at 2018-03-07 13:10:45 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mTopic Load (0.2ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?[0m  [["topic_id", 2]]
+  Rendered topics/show.html.erb within layouts/application (1.4ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+Completed 200 OK in 33ms (Views: 31.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/topics/2/bookmarks/7/edit" for ::1 at 2018-03-07 13:10:47 -0700
+Processing by BookmarksController#edit as HTML
+  Parameters: {"topic_id"=>"2", "id"=>"7"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1[0m  [["id", 7]]
+  Rendered bookmarks/edit.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 55ms (Views: 52.5ms | ActiveRecord: 0.3ms)
+
+
+Started PATCH "/topics/2/bookmarks/7" for ::1 at 2018-03-07 13:10:49 -0700
+Processing by BookmarksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9mTsn5ahow3eHAkfpvhYlkxjxUyiAH64u5PY6uQi0mLjr5Hbyq9ECwEQn42RqygeN0NHNh/EZaIXYMQG/r5k6g==", "bookmark"=>{"url"=>"http://olsonfarrell.biz/rebeca.gleason"}, "commit"=>"Save", "topic_id"=>"2", "id"=>"7"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1  [["id", 7]]
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.3ms)
+
+Pundit::NotDefinedError (unable to find policy `BookmarkPolicy` for `#<Bookmark id: 7, url: "http://olsonfarrell.biz/rebeca.gleason", topic_id: 2, created_at: "2018-03-05 00:13:35", updated_at: "2018-03-05 00:13:35">`):
+  app/controllers/bookmarks_controller.rb:30:in `update'
+
+
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.7ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (75.0ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (57.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (130.1ms)
+
+
+Started GET "/topics/2" for ::1 at 2018-03-07 13:11:34 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mBookmark Load (0.2ms)[0m  SELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?  [["topic_id", 2]]
+  Rendered topics/show.html.erb within layouts/application (4.3ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+Completed 200 OK in 67ms (Views: 55.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/topics/2" for ::1 at 2018-03-07 13:11:35 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?[0m  [["topic_id", 2]]
+  Rendered topics/show.html.erb within layouts/application (1.4ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+Completed 200 OK in 34ms (Views: 33.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/topics/2" for ::1 at 2018-03-07 13:11:35 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?  [["topic_id", 2]]
+  Rendered topics/show.html.erb within layouts/application (1.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+Completed 200 OK in 30ms (Views: 29.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/topics/2/bookmarks/7/edit" for ::1 at 2018-03-07 13:11:36 -0700
+Processing by BookmarksController#edit as HTML
+  Parameters: {"topic_id"=>"2", "id"=>"7"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mBookmark Load (0.2ms)[0m  SELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1  [["id", 7]]
+  Rendered bookmarks/edit.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 51ms (Views: 38.2ms | ActiveRecord: 0.4ms)
+
+
+Started PATCH "/topics/2/bookmarks/7" for ::1 at 2018-03-07 13:11:38 -0700
+Processing by BookmarksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EFu8uPGnfRBubw0M//JwDMarCvPU2efGg9TiRya133MFkMH8ramaFrFjm57IoQCEvYuIiWkd/NwvJ/6rPClp+w==", "bookmark"=>{"url"=>"http://olsonfarrell.biz/rebeca.gleason"}, "commit"=>"Save", "topic_id"=>"2", "id"=>"7"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1[0m  [["id", 7]]
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.3ms)
+
+NoMethodError (undefined method `user' for #<Bookmark:0x007ffca8e7e418>):
+  app/policies/application_policy.rb:26:in `update?'
+  app/controllers/bookmarks_controller.rb:30:in `update'
+
+
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.8ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (67.1ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (58.0ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (134.6ms)
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT  "bookmarks".* FROM "bookmarks"  ORDER BY "bookmarks"."id" ASC LIMIT 1[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_bookmarks_on_topic_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_bookmarks_on_topic_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_topics_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_topics_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+[0m
+  [1m[36m (1.2ms)[0m  [1mCREATE TABLE "bookmarks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar, "topic_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (1.0ms)[0m  [1mCREATE  INDEX "index_bookmarks_on_topic_id" ON "bookmarks" ("topic_id")[0m
+  [1m[35m (0.9ms)[0m  CREATE TABLE "topics" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.7ms)[0m  [1mCREATE  INDEX "index_topics_on_user_id" ON "topics" ("user_id")[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "confirmation_token" varchar, "confirmed_at" datetime, "confirmation_sent_at" datetime) 
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+[0m
+  [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180221181207')
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180221181135')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180220173610')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180220173223')[0m
+  [1m[35m (1.1ms)[0m  CREATE TABLE "bookmarks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar, "topic_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.9ms)[0m  CREATE  INDEX "index_bookmarks_on_topic_id" ON "bookmarks" ("topic_id")
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "topics" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (1.1ms)[0m  CREATE  INDEX "index_topics_on_user_id" ON "topics" ("user_id")
+  [1m[36m (1.3ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "confirmation_token" varchar, "confirmed_at" datetime, "confirmation_sent_at" datetime) [0m
+  [1m[35m (1.3ms)[0m  CREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+[0m
+  [1m[35m (1.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+
+  [1m[36m (1.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (1.1ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (1.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (1.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180221181207')[0m
+  [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180221181135')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180220173610')[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180220173223')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'emma_jast@bartoletti.info' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "emma_jast@bartoletti.info"], ["encrypted_password", "$2a$11$rqBmeHc20/7SJN.N4pIzd.V73qKk9F7YIQ4tqQool918vT3XcWfb."], ["created_at", "2018-03-07 20:22:05.554485"], ["updated_at", "2018-03-07 20:22:05.554485"], ["confirmation_token", "52iRTkB932teryP978Fp"], ["confirmation_sent_at", "2018-03-07 20:22:05.554752"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (12.1ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 226.2ms
+
+Sent mail to r.z.travis@gmail.com (1146.4ms)
+Date: Wed, 07 Mar 2018 13:22:05 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: r.z.travis@gmail.com
+Message-ID: <5aa049edc3619_637d3fdcf385e1b027580@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome emma_jast@bartoletti.info!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=52iRTkB932teryP978Fp">Confirm my account</a></p>
+
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'hilda@rosenbaum.biz' LIMIT 1[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "hilda@rosenbaum.biz"], ["encrypted_password", "$2a$11$vZzLslyVN9UK1/pdCz9gcurv0msfebke2KiOPkRwq6MB/YGG5G9fi"], ["created_at", "2018-03-07 20:22:07.061070"], ["updated_at", "2018-03-07 20:22:07.061070"], ["confirmation_token", "izjF9dqu2sz2viZ_E_cv"], ["confirmation_sent_at", "2018-03-07 20:22:07.061273"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (2.1ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 21.8ms
+
+Sent mail to r.z.travis@gmail.com (1030.9ms)
+Date: Wed, 07 Mar 2018 13:22:07 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: r.z.travis@gmail.com
+Message-ID: <5aa049ef157f3_637d3fdcf385e1b02767a@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome hilda@rosenbaum.biz!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=izjF9dqu2sz2viZ_E_cv">Confirm my account</a></p>
+
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'jon@oconnerrice.co' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "jon@oconnerrice.co"], ["encrypted_password", "$2a$11$0dgkweRL4WMsCYh54UFTJ.q08V6GaMxH95xS23hvoj3cdxw2X0RrC"], ["created_at", "2018-03-07 20:22:08.240959"], ["updated_at", "2018-03-07 20:22:08.240959"], ["confirmation_token", "Lyp2yeqDzDoWzs1CLNim"], ["confirmation_sent_at", "2018-03-07 20:22:08.241128"]]
+  [1m[36m (6.8ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (2.2ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 21.2ms
+
+Sent mail to r.z.travis@gmail.com (947.3ms)
+Date: Wed, 07 Mar 2018 13:22:08 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: r.z.travis@gmail.com
+Message-ID: <5aa049f042576_637d3fdcf385e1b027789@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome jon@oconnerrice.co!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=Lyp2yeqDzDoWzs1CLNim">Confirm my account</a></p>
+
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'fay@ornkuphal.org' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "fay@ornkuphal.org"], ["encrypted_password", "$2a$11$6h1GcMeqPLoaijAGqQvI3O0oyLEN/L7oz/SX.VBusYg0KEDhD/EGK"], ["created_at", "2018-03-07 20:22:09.333432"], ["updated_at", "2018-03-07 20:22:09.333432"], ["confirmation_token", "JLDUeBZyKDzc14HvzJyG"], ["confirmation_sent_at", "2018-03-07 20:22:09.333593"]]
+  [1m[36m (6.9ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (2.4ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 23.3ms
+
+Sent mail to r.z.travis@gmail.com (972.4ms)
+Date: Wed, 07 Mar 2018 13:22:09 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: r.z.travis@gmail.com
+Message-ID: <5aa049f15988f_637d3fdcf385e1b027863@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome fay@ornkuphal.org!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=JLDUeBZyKDzc14HvzJyG">Confirm my account</a></p>
+
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'nash@gleichner.info' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "nash@gleichner.info"], ["encrypted_password", "$2a$11$9EoIgKhuLHLomVRYlHc2S.g7SWiq8MrSe6xryr0EhwfxtWRIFM1ma"], ["created_at", "2018-03-07 20:22:10.455977"], ["updated_at", "2018-03-07 20:22:10.455977"], ["confirmation_token", "5Z8GSs3dgnSU3djbS6Ns"], ["confirmation_sent_at", "2018-03-07 20:22:10.456163"]]
+  [1m[36m (6.4ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (2.3ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 22.0ms
+
+Sent mail to r.z.travis@gmail.com (1012.3ms)
+Date: Wed, 07 Mar 2018 13:22:10 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: r.z.travis@gmail.com
+Message-ID: <5aa049f276e56_637d3fdcf385e1b02794c@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome nash@gleichner.info!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=5Z8GSs3dgnSU3djbS6Ns">Confirm my account</a></p>
+
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "topics" ("user_id", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["user_id", 5], ["title", "Erbium"], ["created_at", "2018-03-07 20:22:11.520029"], ["updated_at", "2018-03-07 20:22:11.520029"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "topics" ("user_id", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 4], ["title", "Vanadium"], ["created_at", "2018-03-07 20:22:11.522553"], ["updated_at", "2018-03-07 20:22:11.522553"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "topics" ("user_id", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["user_id", 4], ["title", "Indium"], ["created_at", "2018-03-07 20:22:11.524874"], ["updated_at", "2018-03-07 20:22:11.524874"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "topics" ("user_id", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 2], ["title", "Hassium"], ["created_at", "2018-03-07 20:22:11.526951"], ["updated_at", "2018-03-07 20:22:11.526951"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "topics" ("user_id", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["user_id", 2], ["title", "Yttrium"], ["created_at", "2018-03-07 20:22:11.529356"], ["updated_at", "2018-03-07 20:22:11.529356"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mTopic Load (0.2ms)[0m  SELECT "topics".* FROM "topics"
+  [1m[36m (1.1ms)[0m  [1mCREATE TABLE "bookmarks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar, "topic_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (1.0ms)[0m  [1mCREATE  INDEX "index_bookmarks_on_topic_id" ON "bookmarks" ("topic_id")[0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "topics" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mCREATE  INDEX "index_topics_on_user_id" ON "topics" ("user_id")[0m
+  [1m[35m (0.9ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "confirmation_token" varchar, "confirmed_at" datetime, "confirmation_sent_at" datetime) 
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+[0m
+  [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.8ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180221181207')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180221181135')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180220173610')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180220173223')[0m
+  [1m[35m (1.1ms)[0m  CREATE TABLE "bookmarks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar, "topic_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.8ms)[0m  CREATE  INDEX "index_bookmarks_on_topic_id" ON "bookmarks" ("topic_id")
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "topics" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.8ms)[0m  CREATE  INDEX "index_topics_on_user_id" ON "topics" ("user_id")
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "confirmation_token" varchar, "confirmed_at" datetime, "confirmation_sent_at" datetime) [0m
+  [1m[35m (0.8ms)[0m  CREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+[0m
+  [1m[35m (0.8ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180221181207')[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180221181135')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180220173610')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180220173223')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddUserIdToBookmarks (20180307202435)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "bookmarks" ADD "user_id" integer[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20180307202435"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_bookmarks_on_topic_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_bookmarks_on_topic_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_topics_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_topics_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+[0m
+  [1m[36m (6.5ms)[0m  [1mCREATE TABLE "bookmarks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar, "topic_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "user_id" integer) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.8ms)[0m  [1mCREATE  INDEX "index_bookmarks_on_topic_id" ON "bookmarks" ("topic_id")[0m
+  [1m[35m (0.9ms)[0m  CREATE TABLE "topics" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.9ms)[0m  [1mCREATE  INDEX "index_topics_on_user_id" ON "topics" ("user_id")[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "confirmation_token" varchar, "confirmed_at" datetime, "confirmation_sent_at" datetime) 
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+[0m
+  [1m[35m (0.8ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180307202435')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180221181207')[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180221181135')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180220173610')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180220173223')
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "bookmarks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar, "topic_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "user_id" integer) [0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.8ms)[0m  [1mCREATE  INDEX "index_bookmarks_on_topic_id" ON "bookmarks" ("topic_id")[0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "topics" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.9ms)[0m  [1mCREATE  INDEX "index_topics_on_user_id" ON "topics" ("user_id")[0m
+  [1m[35m (0.9ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "confirmation_token" varchar, "confirmed_at" datetime, "confirmation_sent_at" datetime) 
+  [1m[36m (1.5ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+[0m
+  [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180307202435')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180221181207')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180221181135')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20180220173610')[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20180220173223')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vida@gorczany.biz' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "vida@gorczany.biz"], ["encrypted_password", "$2a$11$j37SLMyuipEQsc3ceigUGO0UonApp/S1LKM/yRGrLHasLI6U54W06"], ["created_at", "2018-03-07 20:26:12.372293"], ["updated_at", "2018-03-07 20:26:12.372293"], ["confirmation_token", "Javsa8kDumUbjrWqybWv"], ["confirmation_sent_at", "2018-03-07 20:26:12.372550"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (7.5ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 231.9ms
+
+Sent mail to r.z.travis@gmail.com (1101.0ms)
+Date: Wed, 07 Mar 2018 13:26:12 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: r.z.travis@gmail.com
+Message-ID: <5aa04ae4986ab_639b3fc78b8601b84357@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome vida@gorczany.biz!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=Javsa8kDumUbjrWqybWv">Confirm my account</a></p>
+
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'natalia.stoltenberg@koelpin.org' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "natalia.stoltenberg@koelpin.org"], ["encrypted_password", "$2a$11$4TSZKu.8SYOUpBPZopcNN.JSXt.g.E6EUVv6wjLEW8xufBIAhSkqW"], ["created_at", "2018-03-07 20:26:13.839658"], ["updated_at", "2018-03-07 20:26:13.839658"], ["confirmation_token", "Cd88okgZDu4-sc3joYy-"], ["confirmation_sent_at", "2018-03-07 20:26:13.839860"]]
+  [1m[36m (6.7ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (2.2ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 23.0ms
+
+Sent mail to r.z.travis@gmail.com (1071.5ms)
+Date: Wed, 07 Mar 2018 13:26:13 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: r.z.travis@gmail.com
+Message-ID: <5aa04ae5d4fd9_639b3fc78b8601b844c1@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome natalia.stoltenberg@koelpin.org!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=Cd88okgZDu4-sc3joYy-">Confirm my account</a></p>
+
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'peggie_stracke@cremin.org' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "peggie_stracke@cremin.org"], ["encrypted_password", "$2a$11$U.wFjdvtmR368DSuoXyGOe0ljjquqgGuBTWGneLQaqTDzqho4DQe6"], ["created_at", "2018-03-07 20:26:15.061560"], ["updated_at", "2018-03-07 20:26:15.061560"], ["confirmation_token", "y3xoB--Lz3PsCLbcByBr"], ["confirmation_sent_at", "2018-03-07 20:26:15.061722"]]
+  [1m[36m (6.8ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (2.0ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 21.0ms
+
+Sent mail to r.z.travis@gmail.com (912.2ms)
+Date: Wed, 07 Mar 2018 13:26:15 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: r.z.travis@gmail.com
+Message-ID: <5aa04ae716873_639b3fc78b8601b845c5@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome peggie_stracke@cremin.org!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=y3xoB--Lz3PsCLbcByBr">Confirm my account</a></p>
+
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'lillian.jast@hermanrunolfsdottir.net' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "lillian.jast@hermanrunolfsdottir.net"], ["encrypted_password", "$2a$11$w6K7YgFrMDZqdlGD/Ubl4uEyYCDIfWBew57bVjoPhTJYtmhFeMkkS"], ["created_at", "2018-03-07 20:26:16.125534"], ["updated_at", "2018-03-07 20:26:16.125534"], ["confirmation_token", "ruA-FBxs-DFKvryH4E6k"], ["confirmation_sent_at", "2018-03-07 20:26:16.125690"]]
+  [1m[36m (6.5ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (1.8ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 20.0ms
+
+Sent mail to r.z.travis@gmail.com (929.2ms)
+Date: Wed, 07 Mar 2018 13:26:16 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: r.z.travis@gmail.com
+Message-ID: <5aa04ae825c80_639b3fc78b8601b846cf@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome lillian.jast@hermanrunolfsdottir.net!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=ruA-FBxs-DFKvryH4E6k">Confirm my account</a></p>
+
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'emelia@wilderman.co' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)  [["email", "emelia@wilderman.co"], ["encrypted_password", "$2a$11$8K8EO5jpvjsf4UjSsRPrveQXXbCr0qkDudiHzhBDIf3o.B2nb56nS"], ["created_at", "2018-03-07 20:26:17.201849"], ["updated_at", "2018-03-07 20:26:17.201849"], ["confirmation_token", "cTFr-LojYnWcC8mGevK3"], ["confirmation_sent_at", "2018-03-07 20:26:17.202021"]]
+  [1m[36m (6.4ms)[0m  [1mcommit transaction[0m
+  Rendered devise/mailer/confirmation_instructions.html.erb (2.2ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 21.4ms
+
+Sent mail to r.z.travis@gmail.com (971.4ms)
+Date: Wed, 07 Mar 2018 13:26:17 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: r.z.travis@gmail.com
+Message-ID: <5aa04ae938cf2_639b3fc78b8601b847e@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome emelia@wilderman.co!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=cTFr-LojYnWcC8mGevK3">Confirm my account</a></p>
+
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "topics" ("user_id", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["user_id", 5], ["title", "Germanium"], ["created_at", "2018-03-07 20:26:18.225779"], ["updated_at", "2018-03-07 20:26:18.225779"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "topics" ("user_id", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 4], ["title", "Copper"], ["created_at", "2018-03-07 20:26:18.228526"], ["updated_at", "2018-03-07 20:26:18.228526"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "topics" ("user_id", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["user_id", 4], ["title", "Hydrogen"], ["created_at", "2018-03-07 20:26:18.231022"], ["updated_at", "2018-03-07 20:26:18.231022"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "topics" ("user_id", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["title", "Chlorine"], ["created_at", "2018-03-07 20:26:18.233163"], ["updated_at", "2018-03-07 20:26:18.233163"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "topics" ("user_id", "title", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["user_id", 3], ["title", "Roentgenium"], ["created_at", "2018-03-07 20:26:18.235444"], ["updated_at", "2018-03-07 20:26:18.235444"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mTopic Load (0.1ms)[0m  SELECT "topics".* FROM "topics"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "bookmarks" ("topic_id", "user_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["topic_id", 5], ["user_id", 1], ["url", "http://treutel.name/mike_champlin"], ["created_at", "2018-03-07 20:26:18.244085"], ["updated_at", "2018-03-07 20:26:18.244085"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "bookmarks" ("topic_id", "user_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["topic_id", 3], ["user_id", 4], ["url", "http://beatty.info/vincenzo"], ["created_at", "2018-03-07 20:26:18.247409"], ["updated_at", "2018-03-07 20:26:18.247409"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "bookmarks" ("topic_id", "user_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["topic_id", 3], ["user_id", 2], ["url", "http://walter.name/merl.waelchi"], ["created_at", "2018-03-07 20:26:18.250024"], ["updated_at", "2018-03-07 20:26:18.250024"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "bookmarks" ("topic_id", "user_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["topic_id", 4], ["user_id", 4], ["url", "http://luettgen.biz/luis_bogisich"], ["created_at", "2018-03-07 20:26:18.252704"], ["updated_at", "2018-03-07 20:26:18.252704"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "bookmarks" ("topic_id", "user_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["topic_id", 1], ["user_id", 1], ["url", "http://mclaughlin.name/gino"], ["created_at", "2018-03-07 20:26:18.255377"], ["updated_at", "2018-03-07 20:26:18.255377"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "bookmarks" ("topic_id", "user_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["topic_id", 5], ["user_id", 4], ["url", "http://kreiger.io/macey"], ["created_at", "2018-03-07 20:26:18.257849"], ["updated_at", "2018-03-07 20:26:18.257849"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "bookmarks" ("topic_id", "user_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["topic_id", 4], ["user_id", 1], ["url", "http://padberg.net/darlene"], ["created_at", "2018-03-07 20:26:18.260307"], ["updated_at", "2018-03-07 20:26:18.260307"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "bookmarks" ("topic_id", "user_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["topic_id", 2], ["user_id", 5], ["url", "http://zboncak.biz/kitty_walsh"], ["created_at", "2018-03-07 20:26:18.262707"], ["updated_at", "2018-03-07 20:26:18.262707"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "bookmarks" ("topic_id", "user_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["topic_id", 5], ["user_id", 1], ["url", "http://gibson.org/mekhi.ryan"], ["created_at", "2018-03-07 20:26:18.265166"], ["updated_at", "2018-03-07 20:26:18.265166"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "bookmarks" ("topic_id", "user_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["topic_id", 5], ["user_id", 4], ["url", "http://sporer.net/keven"], ["created_at", "2018-03-07 20:26:18.267379"], ["updated_at", "2018-03-07 20:26:18.267379"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "bookmarks" ("topic_id", "user_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["topic_id", 1], ["user_id", 2], ["url", "http://harvey.co/kaya"], ["created_at", "2018-03-07 20:26:18.269499"], ["updated_at", "2018-03-07 20:26:18.269499"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "bookmarks" ("topic_id", "user_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["topic_id", 4], ["user_id", 5], ["url", "http://jaskolski.org/rowena"], ["created_at", "2018-03-07 20:26:18.271928"], ["updated_at", "2018-03-07 20:26:18.271928"]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "bookmarks" ("topic_id", "user_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["topic_id", 2], ["user_id", 2], ["url", "http://naderbartell.io/george"], ["created_at", "2018-03-07 20:26:18.274048"], ["updated_at", "2018-03-07 20:26:18.274048"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "bookmarks" ("topic_id", "user_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["topic_id", 5], ["user_id", 5], ["url", "http://nolanemmerich.info/ana.harvey"], ["created_at", "2018-03-07 20:26:18.276089"], ["updated_at", "2018-03-07 20:26:18.276089"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "bookmarks" ("topic_id", "user_id", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["topic_id", 4], ["user_id", 2], ["url", "http://howell.io/jerrod"], ["created_at", "2018-03-07 20:26:18.278170"], ["updated_at", "2018-03-07 20:26:18.278170"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "topics"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "bookmarks"
+
+
+Started GET "/" for ::1 at 2018-03-07 13:26:54 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (1.5ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+Completed 200 OK in 310ms (Views: 301.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2018-03-07 13:26:56 -0700
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (11.8ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (501.0ms)
+Completed 200 OK in 546ms (Views: 537.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2018-03-07 13:27:04 -0700
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"V9rPDUKCeInaOWbiY3DNScXbrRkIwDggLOmGRYZsxb5CEbJJHoyfjwU18HBUI73BvvsvY7UEIzqAGpqpnPBzNg==", "user"=>{"email"=>"r.z.travis@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'r.z.travis@gmail.com' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "r.z.travis@gmail.com"], ["encrypted_password", "$2a$11$AIwh7Kcl35FUtmi7TtYHwei8tVZ5A88y51rd.8mJyF.nhKsEUhsF."], ["created_at", "2018-03-07 20:27:04.450163"], ["updated_at", "2018-03-07 20:27:04.450163"], ["confirmation_token", "5ESkVA--6DVP3PB9MpL4"], ["confirmation_sent_at", "2018-03-07 20:27:04.450383"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  Rendered devise/mailer/confirmation_instructions.html.erb (3.7ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 210.4ms
+
+Sent mail to r.z.travis@gmail.com (930.6ms)
+Date: Wed, 07 Mar 2018 13:27:04 -0700
+From: confirm@blocmarks.com
+Reply-To: confirm@blocmarks.com
+To: r.z.travis@gmail.com
+Message-ID: <5aa04b18a4ef3_63ab3ffc10d4a9d044a9@AetherBook.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome r.z.travis@gmail.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=5ESkVA--6DVP3PB9MpL4">Confirm my account</a></p>
+
+Redirected to http://localhost:3000/
+Completed 302 Found in 1307ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/" for ::1 at 2018-03-07 13:27:05 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 22ms (Views: 22.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/confirmation?confirmation_token=5ESkVA--6DVP3PB9MpL4" for ::1 at 2018-03-07 13:27:12 -0700
+Processing by Devise::ConfirmationsController#show as HTML
+  Parameters: {"confirmation_token"=>"5ESkVA--6DVP3PB9MpL4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."confirmation_token" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["confirmation_token", "5ESkVA--6DVP3PB9MpL4"]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "confirmed_at" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["confirmed_at", "2018-03-07 20:27:12.789107"], ["updated_at", "2018-03-07 20:27:12.789525"], ["id", 6]]
+  [1m[35m (1.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 10ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2018-03-07 13:27:12 -0700
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (21.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (32.4ms)
+Completed 200 OK in 74ms (Views: 73.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2018-03-07 13:27:26 -0700
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3DFAiMgCygBs3MtBk4hB+7+51IVmLZRfOIaxLAPnYljJ+j3MlAwtBrPQXdOk2zFzxJlW/9vpj0WUda3AGXvU0A==", "user"=>{"email"=>"r.z.travis@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "r.z.travis@gmail.com"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["last_sign_in_at", "2018-03-07 20:27:26.543727"], ["current_sign_in_at", "2018-03-07 20:27:26.543727"], ["last_sign_in_ip", "::1"], ["current_sign_in_ip", "::1"], ["sign_in_count", 1], ["updated_at", "2018-03-07 20:27:26.544470"], ["id", 6]]
+  [1m[35m (6.3ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 126ms (ActiveRecord: 6.9ms)
+
+
+Started GET "/" for ::1 at 2018-03-07 13:27:26 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+Completed 200 OK in 25ms (Views: 24.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/welcome" for ::1 at 2018-03-07 13:27:28 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+Completed 200 OK in 26ms (Views: 25.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/topics" for ::1 at 2018-03-07 13:27:29 -0700
+Processing by TopicsController#index as HTML
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT "topics".* FROM "topics"[0m
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT "bookmarks".* FROM "bookmarks"
+  Rendered topics/index.html.erb within layouts/application (6.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+Completed 200 OK in 37ms (Views: 30.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/topics/1" for ::1 at 2018-03-07 13:27:31 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTopic Load (0.2ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBookmark Load (0.2ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?[0m  [["topic_id", 1]]
+  Rendered topics/show.html.erb within layouts/application (1.5ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+Completed 200 OK in 34ms (Views: 24.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/topics/1/bookmarks/5/edit" for ::1 at 2018-03-07 13:27:32 -0700
+Processing by BookmarksController#edit as HTML
+  Parameters: {"topic_id"=>"1", "id"=>"5"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered bookmarks/edit.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 30ms (Views: 27.4ms | ActiveRecord: 0.3ms)
+
+
+Started PATCH "/topics/1/bookmarks/5" for ::1 at 2018-03-07 13:27:33 -0700
+Processing by BookmarksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"i7mz7ZkR9ySQr0fv6K+7wH5ZUG2NxuehYUtEMVrRdOMdgKoiFFJ5bQgQCHjajwuwnaWBihD+5SnXi5QXZKpIxg==", "bookmark"=>{"url"=>"http://mclaughlin.name/gino"}, "commit"=>"Save", "topic_id"=>"1", "id"=>"5"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 401 Unauthorized in 11ms (ActiveRecord: 0.4ms)
+
+Pundit::NotAuthorizedError (not allowed to update? this #<Bookmark id: 5, url: "http://mclaughlin.name/gino", topic_id: 1, created_at: "2018-03-07 20:26:18", updated_at: "2018-03-07 20:26:18", user_id: 1>):
+  app/controllers/bookmarks_controller.rb:30:in `update'
+
+
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.7ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (67.8ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (54.9ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (124.4ms)
+
+
+Started GET "/topics/1" for ::1 at 2018-03-07 13:28:14 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTopic Load (0.5ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?[0m  [["topic_id", 1]]
+  Rendered topics/show.html.erb within layouts/application (1.7ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+Completed 200 OK in 41ms (Views: 39.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/topics" for ::1 at 2018-03-07 13:28:15 -0700
+Processing by TopicsController#index as HTML
+  [1m[36mTopic Load (0.2ms)[0m  [1mSELECT "topics".* FROM "topics"[0m
+  [1m[35mBookmark Load (0.2ms)[0m  SELECT "bookmarks".* FROM "bookmarks"
+  Rendered topics/index.html.erb within layouts/application (3.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+Completed 200 OK in 41ms (Views: 39.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/topics/new" for ::1 at 2018-03-07 13:28:16 -0700
+Processing by TopicsController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  Rendered topics/new.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 36ms (Views: 34.0ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/topics" for ::1 at 2018-03-07 13:28:19 -0700
+Processing by TopicsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"BwboaOfDvLfcg5HC8wmmXxs1vNbE6lIFWjCT3Fmpj06RP/GnaoAy/kQ83lXBKRYv+MltMVnSUI3s8EP6Z9Kzaw==", "topic"=>{"title"=>"Richard"}, "commit"=>"Save"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "topics" ("title", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Richard"], ["user_id", 6], ["created_at", "2018-03-07 20:28:19.125038"], ["updated_at", "2018-03-07 20:28:19.125038"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/topics/6
+Completed 302 Found in 5ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/topics/6" for ::1 at 2018-03-07 13:28:19 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?  [["topic_id", 6]]
+  Rendered topics/show.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+Completed 200 OK in 31ms (Views: 30.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/topics/6/bookmarks/new" for ::1 at 2018-03-07 13:28:20 -0700
+Processing by BookmarksController#new as HTML
+  Parameters: {"topic_id"=>"6"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  Rendered bookmarks/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 41ms (Views: 39.1ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/topics/6/bookmarks" for ::1 at 2018-03-07 13:28:22 -0700
+Processing by BookmarksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+kwQdPlhWvz3crkoE0U4QbVYHNKpceGZhfX/TKUVHyRsdQm7dCLUtW/N9r8hZYgxVqTNNTRJ4xEzNS9qm24jAQ==", "bookmark"=>{"url"=>"rawr"}, "commit"=>"Save", "topic_id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "bookmarks" ("url", "topic_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["url", "rawr"], ["topic_id", 6], ["created_at", "2018-03-07 20:28:22.074145"], ["updated_at", "2018-03-07 20:28:22.074145"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/topics/6
+Completed 302 Found in 5ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/topics/6" for ::1 at 2018-03-07 13:28:22 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?  [["topic_id", 6]]
+  Rendered topics/show.html.erb within layouts/application (1.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+Completed 200 OK in 36ms (Views: 34.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/topics/6/bookmarks/16/edit" for ::1 at 2018-03-07 13:28:23 -0700
+Processing by BookmarksController#edit as HTML
+  Parameters: {"topic_id"=>"6", "id"=>"16"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1  [["id", 16]]
+  Rendered bookmarks/edit.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 37ms (Views: 34.9ms | ActiveRecord: 0.3ms)
+
+
+Started PATCH "/topics/6/bookmarks/16" for ::1 at 2018-03-07 13:28:24 -0700
+Processing by BookmarksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nsBgxSrAehD8zfJgQj8npF5j0PQLldk7J9UIvnaWDRUI+XkKp4P0WWRyvfdwH5fUvZ8BE5at27ORFdiYSO0xMA==", "bookmark"=>{"url"=>"rawr"}, "commit"=>"Save", "topic_id"=>"6", "id"=>"16"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1[0m  [["id", 16]]
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.3ms)
+
+Pundit::NotAuthorizedError (not allowed to update? this #<Bookmark id: 16, url: "rawr", topic_id: 6, created_at: "2018-03-07 20:28:22", updated_at: "2018-03-07 20:28:22", user_id: nil>):
+  app/controllers/bookmarks_controller.rb:30:in `update'
+
+
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (64.9ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (52.2ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (123.3ms)
+
+
+Started GET "/topics/6" for ::1 at 2018-03-07 13:31:43 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?[0m  [["topic_id", 6]]
+  Rendered topics/show.html.erb within layouts/application (3.3ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+Completed 200 OK in 44ms (Views: 36.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/topics/6" for ::1 at 2018-03-07 13:31:44 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?  [["topic_id", 6]]
+  Rendered topics/show.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+Completed 200 OK in 29ms (Views: 27.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/topics/6/bookmarks/16/edit" for ::1 at 2018-03-07 13:31:46 -0700
+Processing by BookmarksController#edit as HTML
+  Parameters: {"topic_id"=>"6", "id"=>"16"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1  [["id", 16]]
+  Rendered bookmarks/edit.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 45ms (Views: 32.0ms | ActiveRecord: 0.4ms)
+
+
+Started PATCH "/topics/6/bookmarks/16" for ::1 at 2018-03-07 13:31:47 -0700
+Processing by BookmarksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"D5H6G9yyQgrXDIcV0zZFPGIcPE8EkAJJSoskh835dCSZqOPUUfHMQ0+zyILhFvVMgeDtqJmoAMH8S/Sh84JIAQ==", "bookmark"=>{"url"=>"rawra"}, "commit"=>"Save", "topic_id"=>"6", "id"=>"16"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1[0m  [["id", 16]]
+Completed 401 Unauthorized in 6ms (ActiveRecord: 0.3ms)
+
+Pundit::NotAuthorizedError (not allowed to update? this #<Bookmark id: 16, url: "rawr", topic_id: 6, created_at: "2018-03-07 20:28:22", updated_at: "2018-03-07 20:28:22", user_id: nil>):
+  app/controllers/bookmarks_controller.rb:30:in `update'
+
+
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (64.8ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (63.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (139.3ms)
+
+
+Started GET "/topics/6" for ::1 at 2018-03-07 13:32:43 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mBookmark Load (0.2ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?[0m  [["topic_id", 6]]
+  Rendered topics/show.html.erb within layouts/application (3.4ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+Completed 200 OK in 44ms (Views: 35.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/topics/6/bookmarks/new" for ::1 at 2018-03-07 13:32:48 -0700
+Processing by BookmarksController#new as HTML
+  Parameters: {"topic_id"=>"6"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  Rendered bookmarks/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 46ms (Views: 33.2ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/topics/6/bookmarks" for ::1 at 2018-03-07 13:32:51 -0700
+Processing by BookmarksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8z3p8NYcSNz+vGI66X4bZN2g5Reo40abDZh/9fY3yp5lBPA/W1/GlWYDLa3bXqsUPlw08DXbRBO7WK/TyEz2uw==", "bookmark"=>{"url"=>"2"}, "commit"=>"Save", "topic_id"=>"6"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "bookmarks" ("url", "topic_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["url", "2"], ["topic_id", 6], ["user_id", 6], ["created_at", "2018-03-07 20:32:51.140457"], ["updated_at", "2018-03-07 20:32:51.140457"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/topics/6
+Completed 302 Found in 6ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/topics/6" for ::1 at 2018-03-07 13:32:51 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?[0m  [["topic_id", 6]]
+  Rendered topics/show.html.erb within layouts/application (1.3ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+Completed 200 OK in 34ms (Views: 32.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/topics/6/bookmarks/17/edit" for ::1 at 2018-03-07 13:32:52 -0700
+Processing by BookmarksController#edit as HTML
+  Parameters: {"topic_id"=>"6", "id"=>"17"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1[0m  [["id", 17]]
+  Rendered bookmarks/edit.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 34ms (Views: 31.3ms | ActiveRecord: 0.4ms)
+
+
+Started PATCH "/topics/6/bookmarks/17" for ::1 at 2018-03-07 13:32:54 -0700
+Processing by BookmarksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GjnqI3YIr1O8nZ1vZ4DJU5kZXOqWD5XgIUDX5Kbv8ZmMAPPs+0shGiQi0vhVoHkjeuWNDQs3l2iXgAfCmJTNvA==", "bookmark"=>{"url"=>"22"}, "commit"=>"Save", "topic_id"=>"6", "id"=>"17"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1  [["id", 17]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "bookmarks" SET "url" = ?, "updated_at" = ? WHERE "bookmarks"."id" = ?[0m  [["url", "22"], ["updated_at", "2018-03-07 20:32:54.467961"], ["id", 17]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Redirected to http://localhost:3000/topics/6
+Completed 302 Found in 7ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/topics/6" for ::1 at 2018-03-07 13:32:54 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?  [["topic_id", 6]]
+  Rendered topics/show.html.erb within layouts/application (1.5ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+Completed 200 OK in 32ms (Views: 30.7ms | ActiveRecord: 0.3ms)
+  [1m[36mBookmark Load (0.2ms)[0m  [1mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1[0m  [["id", 16]]
+  [1m[35mBookmark Load (0.2ms)[0m  SELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1  [["id", 16]]
+  [1m[36mSQL (6.7ms)[0m  [1mDELETE FROM "bookmarks" WHERE "bookmarks"."id" = ?[0m  [["id", 16]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1  [["id", 16]]
+
+
+Started GET "/topics/6" for ::1 at 2018-03-07 13:33:35 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mBookmark Load (0.2ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?[0m  [["topic_id", 6]]
+  Rendered topics/show.html.erb within layouts/application (1.4ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+Completed 200 OK in 40ms (Views: 38.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/topics/6" for ::1 at 2018-03-07 13:34:32 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mTopic Load (0.2ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mBookmark Load (0.2ms)[0m  SELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?  [["topic_id", 6]]
+  Rendered topics/show.html.erb within layouts/application (3.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+Completed 200 OK in 44ms (Views: 34.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/topics" for ::1 at 2018-03-07 13:34:33 -0700
+Processing by TopicsController#index as HTML
+  [1m[35mTopic Load (0.1ms)[0m  SELECT "topics".* FROM "topics"
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks"[0m
+  Rendered topics/index.html.erb within layouts/application (2.6ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+Completed 200 OK in 36ms (Views: 35.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/topics/1" for ::1 at 2018-03-07 13:34:34 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?  [["topic_id", 1]]
+  Rendered topics/show.html.erb within layouts/application (1.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+Completed 200 OK in 44ms (Views: 42.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/topics/1/bookmarks/5/edit" for ::1 at 2018-03-07 13:34:35 -0700
+Processing by BookmarksController#edit as HTML
+  Parameters: {"topic_id"=>"1", "id"=>"5"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mBookmark Load (0.2ms)[0m  SELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered bookmarks/edit.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 47ms (Views: 34.2ms | ActiveRecord: 0.4ms)
+
+
+Started PATCH "/topics/1/bookmarks/5" for ::1 at 2018-03-07 13:34:36 -0700
+Processing by BookmarksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lBm9ZJ2AGbZu33vFmK2M/gslcGybK6ZQmj5jVSDR9hgCIKSrEMOX//ZgNFKqjTyO6NmhiwYTpNgs/rNzHqrKPQ==", "bookmark"=>{"url"=>"http://mclaughlin.name/ginoaaa"}, "commit"=>"Save", "topic_id"=>"1", "id"=>"5"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+Redirected to http://localhost:3000/topics/1/bookmarks/5/edit
+Completed 302 Found in 6ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/topics/1/bookmarks/5/edit" for ::1 at 2018-03-07 13:34:36 -0700
+Processing by BookmarksController#edit as HTML
+  Parameters: {"topic_id"=>"1", "id"=>"5"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered bookmarks/edit.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 37ms (Views: 35.0ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/topics/1/bookmarks/5" for ::1 at 2018-03-07 13:34:40 -0700
+Processing by BookmarksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HrzdFUvO91R1PxHu7iyp46Rjh5loTDoFzP4JPfQihT6IhcTaxo15He2AXnncDBmTR59WfvV0OI16Ptkbylm5Gw==", "bookmark"=>{"url"=>"http://mclaughlin.name/ginoaaa"}, "commit"=>"Save", "topic_id"=>"1", "id"=>"5"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Redirected to http://localhost:3000/topics/1/bookmarks/5/edit
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/topics/1/bookmarks/5/edit" for ::1 at 2018-03-07 13:34:40 -0700
+Processing by BookmarksController#edit as HTML
+  Parameters: {"topic_id"=>"1", "id"=>"5"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered bookmarks/edit.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 37ms (Views: 34.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/topics/1/bookmarks/5/edit" for ::1 at 2018-03-07 13:35:35 -0700
+Processing by BookmarksController#edit as HTML
+  Parameters: {"topic_id"=>"1", "id"=>"5"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered bookmarks/edit.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 55ms (Views: 32.3ms | ActiveRecord: 1.2ms)
+
+
+Started PATCH "/topics/1/bookmarks/5" for ::1 at 2018-03-07 13:35:38 -0700
+Processing by BookmarksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qoo84wGEBCbM6RYjl4MvNqOuyHch2DgTyzMr8JFBi8s8syUsjMeKb1RWWbSlo59GQFIZkLzgOpt98/vWrzq37g==", "bookmark"=>{"url"=>"http://mclaughlin.name/ginoaasd"}, "commit"=>"Save", "topic_id"=>"1", "id"=>"5"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 401 Unauthorized in 12ms (ActiveRecord: 0.4ms)
+
+NameError (undefined local variable or method `topic_id' for #<BookmarksController:0x007ff8254eeb28>):
+  app/controllers/application_controller.rb:14:in `user_not_authorized'
+
+
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.7ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (71.2ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (57.2ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (132.6ms)
+
+
+Started GET "/topics/1/bookmarks/5/edit" for ::1 at 2018-03-07 13:36:17 -0700
+Processing by BookmarksController#edit as HTML
+  Parameters: {"topic_id"=>"1", "id"=>"5"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered bookmarks/edit.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 28ms (Views: 26.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/topics/1/bookmarks/5/edit" for ::1 at 2018-03-07 13:36:17 -0700
+Processing by BookmarksController#edit as HTML
+  Parameters: {"topic_id"=>"1", "id"=>"5"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered bookmarks/edit.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 32ms (Views: 30.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/topics/1/bookmarks/5/edit" for ::1 at 2018-03-07 13:36:17 -0700
+Processing by BookmarksController#edit as HTML
+  Parameters: {"topic_id"=>"1", "id"=>"5"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered bookmarks/edit.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 26ms (Views: 24.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/topics/1/bookmarks/5/edit" for ::1 at 2018-03-07 13:36:28 -0700
+Processing by BookmarksController#edit as HTML
+  Parameters: {"topic_id"=>"1", "id"=>"5"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered bookmarks/edit.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 28ms (Views: 25.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/topics/1/bookmarks/5/edit" for ::1 at 2018-03-07 13:38:10 -0700
+Processing by BookmarksController#edit as HTML
+  Parameters: {"topic_id"=>"1", "id"=>"5"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered bookmarks/edit.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 53ms (Views: 31.4ms | ActiveRecord: 1.2ms)
+
+
+Started PATCH "/topics/1/bookmarks/5" for ::1 at 2018-03-07 13:38:12 -0700
+Processing by BookmarksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PbSHmddlSAsSid7fC0PyhV/auEJwjXGRNuaMcYsR4G6rjZ5WWibGQoo2kUg5Y0L1vCZppe21cxmAJlxXtWrcSw==", "bookmark"=>{"url"=>"asdasdhttp://mclaughlin.name/gino"}, "commit"=>"Save", "topic_id"=>"1", "id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+Redirected to http://localhost:3000/topics/1/bookmarks/5/edit
+Completed 302 Found in 7ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/topics/1/bookmarks/5/edit" for ::1 at 2018-03-07 13:38:12 -0700
+Processing by BookmarksController#edit as HTML
+  Parameters: {"topic_id"=>"1", "id"=>"5"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered bookmarks/edit.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 30ms (Views: 28.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/topics/1/bookmarks/5/edit" for ::1 at 2018-03-07 13:39:32 -0700
+Processing by BookmarksController#edit as HTML
+  Parameters: {"topic_id"=>"1", "id"=>"5"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered bookmarks/edit.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 35ms (Views: 33.1ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/topics/1/bookmarks/5" for ::1 at 2018-03-07 13:39:34 -0700
+Processing by BookmarksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"iouoJw4Fb4fKKBc99n6+fIYtTljLpeNsk7R/pt2mCA8csrHog0bhzlKXWKrEXg4MZdGfv1ad4eQldK+A4900Kg==", "bookmark"=>{"url"=>"http://mclaughlin.name/gino"}, "topic_id"=>"1", "id"=>"5"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+Redirected to http://localhost:3000/topics/1/bookmarks/5/edit
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/topics/1/bookmarks/5/edit" for ::1 at 2018-03-07 13:39:34 -0700
+Processing by BookmarksController#edit as HTML
+  Parameters: {"topic_id"=>"1", "id"=>"5"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBookmark Load (0.0ms)[0m  [1mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered bookmarks/edit.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 28ms (Views: 26.1ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/topics/1/bookmarks/5" for ::1 at 2018-03-07 13:39:35 -0700
+Processing by BookmarksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"55mUk2PXtq1Xn4XjC9AFahFm4hIbhNkCUbKX2nxBt+NxoI1c7pQ45M8gynQ58LUa8poz9Ya824rnckf8QjqLxg==", "bookmark"=>{"url"=>"http://mclaughlin.name/gino"}, "topic_id"=>"1", "id"=>"5"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Redirected to http://localhost:3000/topics/1/bookmarks/5/edit
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/topics/1/bookmarks/5/edit" for ::1 at 2018-03-07 13:39:35 -0700
+Processing by BookmarksController#edit as HTML
+  Parameters: {"topic_id"=>"1", "id"=>"5"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered bookmarks/edit.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 34ms (Views: 31.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/topics/1/bookmarks/5/edit" for ::1 at 2018-03-07 13:39:51 -0700
+Processing by BookmarksController#edit as HTML
+  Parameters: {"topic_id"=>"1", "id"=>"5"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered bookmarks/edit.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 29ms (Views: 27.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/welcome" for ::1 at 2018-03-07 13:39:54 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.2ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+Completed 200 OK in 36ms (Views: 35.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/topics" for ::1 at 2018-03-07 13:39:55 -0700
+Processing by TopicsController#index as HTML
+  [1m[36mTopic Load (0.2ms)[0m  [1mSELECT "topics".* FROM "topics"[0m
+  [1m[35mBookmark Load (0.2ms)[0m  SELECT "bookmarks".* FROM "bookmarks"
+  Rendered topics/index.html.erb within layouts/application (3.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+Completed 200 OK in 38ms (Views: 36.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/topics/2" for ::1 at 2018-03-07 13:39:56 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mBookmark Load (0.2ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?[0m  [["topic_id", 2]]
+  Rendered topics/show.html.erb within layouts/application (2.7ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+Completed 200 OK in 36ms (Views: 33.9ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/topics/2/bookmarks/8" for ::1 at 2018-03-07 13:39:59 -0700
+Processing by BookmarksController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ctWR4Hdsz+EZdHTh4a4pAQkO2wP/Wfrq7A3vYxbByMzk7Igv+i9BqIHLO3bTjplx6vIK5GJh+GJazT9FKLr06Q==", "topic_id"=>"2", "id"=>"8"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1[0m  [["id", 8]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 5]]
+Redirected to http://localhost:3000/topics/2
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/topics/2" for ::1 at 2018-03-07 13:39:59 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?  [["topic_id", 2]]
+  Rendered topics/show.html.erb within layouts/application (1.1ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+Completed 200 OK in 31ms (Views: 29.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/topics" for ::1 at 2018-03-07 13:40:01 -0700
+Processing by TopicsController#index as HTML
+  [1m[35mTopic Load (0.2ms)[0m  SELECT "topics".* FROM "topics"
+  [1m[36mBookmark Load (0.2ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks"[0m
+  Rendered topics/index.html.erb within layouts/application (2.4ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+Completed 200 OK in 31ms (Views: 30.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/topics/new" for ::1 at 2018-03-07 13:40:02 -0700
+Processing by TopicsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  Rendered topics/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 39ms (Views: 37.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/welcome" for ::1 at 2018-03-07 13:40:04 -0700
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.3ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+Completed 200 OK in 36ms (Views: 35.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/topics" for ::1 at 2018-03-07 13:40:05 -0700
+Processing by TopicsController#index as HTML
+  [1m[36mTopic Load (0.2ms)[0m  [1mSELECT "topics".* FROM "topics"[0m
+  [1m[35mBookmark Load (0.3ms)[0m  SELECT "bookmarks".* FROM "bookmarks"
+  Rendered topics/index.html.erb within layouts/application (3.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+Completed 200 OK in 35ms (Views: 34.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/topics/6" for ::1 at 2018-03-07 13:40:06 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mTopic Load (0.2ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?[0m  [["topic_id", 6]]
+  Rendered topics/show.html.erb within layouts/application (1.2ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+Completed 200 OK in 34ms (Views: 32.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/topics/6/bookmarks/new" for ::1 at 2018-03-07 13:40:07 -0700
+Processing by BookmarksController#new as HTML
+  Parameters: {"topic_id"=>"6"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  Rendered bookmarks/new.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 43ms (Views: 41.6ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/topics/6/bookmarks" for ::1 at 2018-03-07 13:40:09 -0700
+Processing by BookmarksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"R/Dt7bBW5ZNH6swBma+Mvemm2SHy9JhaVfthFQ6gU0HRyfQiPRVr2t9Vg5arjzzNCloIxm/MmtLjO7EzMNtvZA==", "bookmark"=>{"url"=>"rawr"}, "commit"=>"Save", "topic_id"=>"6"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "bookmarks" ("url", "topic_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["url", "rawr"], ["topic_id", 6], ["user_id", 6], ["created_at", "2018-03-07 20:40:09.353796"], ["updated_at", "2018-03-07 20:40:09.353796"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/topics/6
+Completed 302 Found in 5ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/topics/6" for ::1 at 2018-03-07 13:40:09 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?[0m  [["topic_id", 6]]
+  Rendered topics/show.html.erb within layouts/application (1.4ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+Completed 200 OK in 32ms (Views: 31.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/topics/6/bookmarks/18/edit" for ::1 at 2018-03-07 13:40:10 -0700
+Processing by BookmarksController#edit as HTML
+  Parameters: {"topic_id"=>"6", "id"=>"18"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1[0m  [["id", 18]]
+  Rendered bookmarks/edit.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 33ms (Views: 30.1ms | ActiveRecord: 0.3ms)
+
+
+Started PATCH "/topics/6/bookmarks/18" for ::1 at 2018-03-07 13:40:12 -0700
+Processing by BookmarksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"stxjo43sWfsmO5mt2AVHdZb9NiC1ytRlVS7J347qL5kk5XpsAK/Xsr6E1jrqJfcFdQHnxyjy1u3j7hn5sJETvA==", "bookmark"=>{"url"=>"rawrrawr"}, "commit"=>"Save", "topic_id"=>"6", "id"=>"18"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1  [["id", 18]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "bookmarks" SET "url" = ?, "updated_at" = ? WHERE "bookmarks"."id" = ?[0m  [["url", "rawrrawr"], ["updated_at", "2018-03-07 20:40:12.112074"], ["id", 18]]
+  [1m[35m (1.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/topics/6
+Completed 302 Found in 5ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/topics/6" for ::1 at 2018-03-07 13:40:12 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mBookmark Load (0.2ms)[0m  SELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?  [["topic_id", 6]]
+  Rendered topics/show.html.erb within layouts/application (1.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+Completed 200 OK in 28ms (Views: 26.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/topics" for ::1 at 2018-03-07 13:40:35 -0700
+Processing by TopicsController#index as HTML
+  [1m[35mTopic Load (0.1ms)[0m  SELECT "topics".* FROM "topics"
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks"[0m
+  Rendered topics/index.html.erb within layouts/application (2.4ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+Completed 200 OK in 36ms (Views: 35.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/topics/1" for ::1 at 2018-03-07 13:40:36 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?  [["topic_id", 1]]
+  Rendered topics/show.html.erb within layouts/application (1.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+Completed 200 OK in 37ms (Views: 35.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/topics/1" for ::1 at 2018-03-07 13:41:28 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?[0m  [["topic_id", 1]]
+  Rendered topics/show.html.erb within layouts/application (18.0ms)
+Completed 401 Unauthorized in 25ms (ActiveRecord: 0.2ms)
+
+ActionView::Template::Error (undefined method `destroy?' for #<#<Class:0x007ff81de0c208>:0x007ff8259b0af8>):
+    11:     <% @bookmarks.each do |bookmark| %>
+    12:       <div class="bookmark-holder">
+    13:         <div class="pull-right">
+    14:           <% if destroy? %>
+    15:             <%= link_to "", topic_bookmark_path(bookmark.topic_id, bookmark), method: :delete, class: 'glyphicon glyphicon-remove-sign pull-right text-danger', data: {confirm: 'Are you sure you want to delete this bookmark?'} %>
+    16:           <% end %>
+    17:           <br />
+  app/views/topics/show.html.erb:14:in `block in _app_views_topics_show_html_erb___4086947085635326502_70351888038960'
+  app/views/topics/show.html.erb:11:in `_app_views_topics_show_html_erb___4086947085635326502_70351888038960'
+
+
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.8ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (68.5ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (60.5ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (125.8ms)
+
+
+Started GET "/topics/1" for ::1 at 2018-03-07 13:42:54 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBookmark Load (0.2ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?[0m  [["topic_id", 1]]
+  Rendered topics/show.html.erb within layouts/application (19.1ms)
+Completed 401 Unauthorized in 35ms (ActiveRecord: 0.9ms)
+
+ActionView::Template::Error (undefined method `allowed_to_see?' for #<#<Class:0x007ff8252be010>:0x007ff82529d860>):
+    11:     <% @bookmarks.each do |bookmark| %>
+    12:       <div class="bookmark-holder">
+    13:         <div class="pull-right">
+    14:           <% if allowed_to_see? %>
+    15:             <%= link_to "", topic_bookmark_path(bookmark.topic_id, bookmark), method: :delete, class: 'glyphicon glyphicon-remove-sign pull-right text-danger', data: {confirm: 'Are you sure you want to delete this bookmark?'} %>
+    16:           <% end %>
+    17:           <br />
+  app/views/topics/show.html.erb:14:in `block in _app_views_topics_show_html_erb___4086947085635326502_70351876055440'
+  app/views/topics/show.html.erb:11:in `_app_views_topics_show_html_erb___4086947085635326502_70351876055440'
+
+
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (66.6ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (55.6ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (125.3ms)
+
+
+Started GET "/topics/1" for ::1 at 2018-03-07 13:43:55 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?[0m  [["topic_id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  Rendered topics/show.html.erb within layouts/application (12.0ms)
+Completed 401 Unauthorized in 26ms (ActiveRecord: 1.2ms)
+
+ActionView::Template::Error (undefined method `user_id' for nil:NilClass):
+    11:     <% @bookmarks.each do |bookmark| %>
+    12:       <div class="bookmark-holder">
+    13:         <div class="pull-right">
+    14:           <% if allowed_to_see? %>
+    15:             <%= link_to "", topic_bookmark_path(bookmark.topic_id, bookmark), method: :delete, class: 'glyphicon glyphicon-remove-sign pull-right text-danger', data: {confirm: 'Are you sure you want to delete this bookmark?'} %>
+    16:           <% end %>
+    17:           <br />
+  app/helpers/bookmarks_helper.rb:3:in `allowed_to_see?'
+  app/views/topics/show.html.erb:14:in `block in _app_views_topics_show_html_erb___4086947085635326502_70351876055440'
+  app/views/topics/show.html.erb:11:in `_app_views_topics_show_html_erb___4086947085635326502_70351876055440'
+
+
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.6ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (66.2ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (57.2ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (127.9ms)
+
+
+Started GET "/topics/1" for ::1 at 2018-03-07 13:44:33 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mBookmark Load (0.2ms)[0m  SELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?  [["topic_id", 1]]
+  Rendered topics/show.html.erb within layouts/application (5.7ms)
+Completed 401 Unauthorized in 22ms (ActiveRecord: 1.2ms)
+
+ActionView::Template::Error (wrong number of arguments (0 for 1)):
+    11:     <% @bookmarks.each do |bookmark| %>
+    12:       <div class="bookmark-holder">
+    13:         <div class="pull-right">
+    14:           <% if allowed_to_see? %>
+    15:             <%= link_to "", topic_bookmark_path(bookmark.topic_id, bookmark), method: :delete, class: 'glyphicon glyphicon-remove-sign pull-right text-danger', data: {confirm: 'Are you sure you want to delete this bookmark?'} %>
+    16:           <% end %>
+    17:           <br />
+  app/helpers/bookmarks_helper.rb:2:in `allowed_to_see?'
+  app/views/topics/show.html.erb:14:in `block in _app_views_topics_show_html_erb___4086947085635326502_70351876055440'
+  app/views/topics/show.html.erb:11:in `_app_views_topics_show_html_erb___4086947085635326502_70351876055440'
+
+
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.0ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (68.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (58.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (129.7ms)
+
+
+Started GET "/topics/1" for ::1 at 2018-03-07 13:45:01 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mBookmark Load (0.2ms)[0m  SELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?  [["topic_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  Rendered topics/show.html.erb within layouts/application (9.7ms)
+Completed 200 OK in 42ms (Views: 34.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/topics" for ::1 at 2018-03-07 13:45:03 -0700
+Processing by TopicsController#index as HTML
+  [1m[35mTopic Load (0.1ms)[0m  SELECT "topics".* FROM "topics"
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks"[0m
+  Rendered topics/index.html.erb within layouts/application (2.3ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+Completed 200 OK in 28ms (Views: 26.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/topics/2" for ::1 at 2018-03-07 13:45:04 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?  [["topic_id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  Rendered topics/show.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 34ms (Views: 32.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/topics" for ::1 at 2018-03-07 13:45:05 -0700
+Processing by TopicsController#index as HTML
+  [1m[35mTopic Load (0.1ms)[0m  SELECT "topics".* FROM "topics"
+  [1m[36mBookmark Load (0.2ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks"[0m
+  Rendered topics/index.html.erb within layouts/application (2.5ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+Completed 200 OK in 33ms (Views: 31.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/topics/6" for ::1 at 2018-03-07 13:45:07 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?  [["topic_id", 6]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  Rendered topics/show.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 33ms (Views: 31.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/topics" for ::1 at 2018-03-07 13:45:09 -0700
+Processing by TopicsController#index as HTML
+  [1m[35mTopic Load (0.1ms)[0m  SELECT "topics".* FROM "topics"
+  [1m[36mBookmark Load (0.2ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks"[0m
+  Rendered topics/index.html.erb within layouts/application (2.8ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+Completed 200 OK in 33ms (Views: 32.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/topics/1" for ::1 at 2018-03-07 13:45:10 -0700
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?  [["topic_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  Rendered topics/show.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 34ms (Views: 32.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/topics" for ::1 at 2018-03-07 13:45:10 -0700
+Processing by TopicsController#index as HTML
+  [1m[35mTopic Load (0.1ms)[0m  SELECT "topics".* FROM "topics"
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks"[0m
+  Rendered topics/index.html.erb within layouts/application (2.6ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+Completed 200 OK in 32ms (Views: 30.7ms | ActiveRecord: 0.3ms)

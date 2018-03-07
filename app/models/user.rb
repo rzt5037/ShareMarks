@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
          :confirmable
 
   has_many :topics
+  has_many :bookmarks, dependent: :destroy
 end
