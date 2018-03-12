@@ -18,6 +18,7 @@
           <% if policy(bookmark).update? %>
             <%= link_to "", edit_topic_bookmark_path(bookmark.topic_id, bookmark), class: 'glyphicon glyphicon-pencil pull-right text-warning' %>
           <% end %>
+          <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
         </div>
         <div class="space-maker"></div>
         <h5 class="text-center"><%= bookmark.url %></h5>

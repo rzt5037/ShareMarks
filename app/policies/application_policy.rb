@@ -1,9 +1,9 @@
 class ApplicationPolicy
-  attr_reader :user, :bookmark
+  attr_reader :user, :record
 
-  def initialize(user, bookmark)
+  def initialize(user, record)
     @user = user
-    @bookmark = bookmark
+    @record = record
   end
 
   def index?
@@ -11,7 +11,7 @@ class ApplicationPolicy
   end
 
   def show?
-    scope.where(:id => bookmark.id).exists?
+    scope.where(:id => record.id).exists?
   end
 
   def create?
@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    user.present? && (bookmark.user == user)
+    user.present? && (record.user == user)
   end
 
   def edit?
@@ -31,11 +31,11 @@ class ApplicationPolicy
   end
 
   def destroy?
-    user.present? && (bookmark.user == user)
+    user.present? && (record.user == user)
   end
 
   def scope
-    Pundit.policy_scope!(user, bookmark.class)
+    Pundit.policy_scope!(user, record.class)
   end
 
   class Scope
