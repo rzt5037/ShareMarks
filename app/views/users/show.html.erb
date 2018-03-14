@@ -1,1 +1,31 @@
-<p>Show view</p>
+<h1>Page of user <%= @user.email %></h1>
+
+<div class="row">
+  <h3> User Bookmarks </h3>
+  <div class="col-md-8">
+    <% @user_bookmarks.each do |bookmark| %>
+      <div class="bookmark-holder">
+        <div class="space-maker"></div>
+        <h5 class="text-center"><%= bookmark.url %></h5>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <h3> Liked Bookmarks </h3>
+  <div class="col-md-8">
+    <% @liked_bookmarks.each do |like| %>
+      <% bookmark = Bookmark.find(like.bookmark_id) %>
+      <div class="bookmark-holder">
+        <div class="pull-right">
+          <%= link_to topic_bookmark_like_path(:id => like.id, :bookmark_id => like.bookmark_id, :topic_id => bookmark.topic_id), class: 'btn btn-danger', method: :delete do %>
+            <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Unlike
+          <% end %>
+        </div>
+        <div class="space-maker"></div>
+        <h5 class="text-center"><%= bookmark.url %></h5>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'users/show'
+
   devise_for :users
 
   resources :topics, except: [:edit,:update] do

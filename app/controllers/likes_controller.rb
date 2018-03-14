@@ -14,10 +14,10 @@ class LikesController < ApplicationController
 
     if like.save
       flash[:notice] = "Like was saved successfully."
-      redirect_to @topic
+      redirect_to :back
     else
       flash.now[:alert] = "Error creating like. Please try again."
-      redirect_to @topic
+      redirect_to :back
     end
   end
 
@@ -30,10 +30,10 @@ class LikesController < ApplicationController
 
     if like.destroy
       flash[:notice] = "Like was deleted successfully."
-      redirect_to @topic
+      redirect_to :back
     else
       flash.now[:alert] = "There was an error deleting the like."
-      redirect_to @topic
+      redirect_to :back
     end
   end
 end
