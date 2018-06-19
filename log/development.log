@@ -14372,3 +14372,152 @@ Processing by UsersController#show as HTML
   [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT  "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."id" = ? LIMIT 1[0m  [["id", 2]]
   Rendered users/show.html.erb within layouts/application (2.1ms)
 Completed 200 OK in 34ms (Views: 32.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2018-03-29 10:34:52 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 403ms (Views: 393.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2018-03-29 10:34:53 -0600
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2018-03-29 10:34:53 -0600
+
+
+Started GET "/assets/turbolinks.self-2db6ec539b9190f75e1d477b305df53d12904d5cafdd47c7ffd91ba25cbec128.js?body=1" for ::1 at 2018-03-29 10:34:53 -0600
+
+
+Started GET "/assets/bootstrap.self-b38817c3e3a3049abb1fc08dd6ae448b23330f8453226efdb074710209474f75.js?body=1" for ::1 at 2018-03-29 10:34:53 -0600
+
+
+Started GET "/assets/bookmarks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2018-03-29 10:34:53 -0600
+
+
+Started GET "/assets/likes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2018-03-29 10:34:53 -0600
+
+
+Started GET "/assets/topics.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2018-03-29 10:34:53 -0600
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2018-03-29 10:34:53 -0600
+
+
+Started GET "/assets/welcome.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2018-03-29 10:34:53 -0600
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2018-03-29 10:34:53 -0600
+
+
+Started GET "/topics" for ::1 at 2018-03-29 10:34:54 -0600
+Processing by TopicsController#index as HTML
+  [1m[35mTopic Load (0.5ms)[0m  SELECT "topics".* FROM "topics"
+  [1m[36mBookmark Load (0.6ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks"[0m
+  Rendered topics/index.html.erb within layouts/application (11.9ms)
+Completed 200 OK in 53ms (Views: 42.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/bootstrap/glyphicons-halflings-regular-fe185d11a49676890d47bb783312a0cda5a44c4039214094e7957b4c040ef11c.woff2" for ::1 at 2018-03-29 10:34:54 -0600
+
+
+Started GET "/users/sign_in" for ::1 at 2018-03-29 10:35:21 -0600
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (7.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (483.5ms)
+Completed 200 OK in 533ms (Views: 519.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2018-03-29 10:35:29 -0600
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tJLIqFZ4ECMTulWxIMS+OPhRkv+8QQwPB1pqiHksEcYGXyrzRYONQKFkf/l56f3JGtYx+LIP7dXiypGr3G0UjA==", "user"=>{"email"=>"r.z.travis@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "r.z.travis@gmail.com"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2018-03-14 20:27:44.014981"], ["current_sign_in_at", "2018-03-29 16:35:29.945959"], ["sign_in_count", 4], ["updated_at", "2018-03-29 16:35:29.946840"], ["id", 6]]
+  [1m[36m (6.6ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 162ms (ActiveRecord: 7.7ms)
+
+
+Started GET "/" for ::1 at 2018-03-29 10:35:29 -0600
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+Completed 200 OK in 30ms (Views: 29.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/topics" for ::1 at 2018-03-29 10:35:31 -0600
+Processing by TopicsController#index as HTML
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT "topics".* FROM "topics"[0m
+  [1m[35mBookmark Load (0.2ms)[0m  SELECT "bookmarks".* FROM "bookmarks"
+  Rendered topics/index.html.erb within layouts/application (3.0ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+Completed 200 OK in 37ms (Views: 35.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2018-03-30 10:55:34 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (2.0ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+Completed 200 OK in 369ms (Views: 359.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/topics" for ::1 at 2018-03-30 10:55:37 -0600
+Processing by TopicsController#index as HTML
+  [1m[36mTopic Load (0.5ms)[0m  [1mSELECT "topics".* FROM "topics"[0m
+  [1m[35mBookmark Load (0.5ms)[0m  SELECT "bookmarks".* FROM "bookmarks"
+  Rendered topics/index.html.erb within layouts/application (21.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+Completed 200 OK in 90ms (Views: 80.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/topics/1" for ::1 at 2018-03-30 10:55:39 -0600
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTopic Load (0.2ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mBookmark Load (0.5ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?[0m  [["topic_id", 1]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mLike Load (0.6ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."bookmark_id" = ?  ORDER BY "likes"."id" ASC LIMIT 1  [["user_id", 6], ["bookmark_id", 1]]
+  Rendered likes/_like.html.erb (20.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mLike Load (0.1ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."bookmark_id" = ?  ORDER BY "likes"."id" ASC LIMIT 1  [["user_id", 6], ["bookmark_id", 10]]
+  Rendered likes/_like.html.erb (0.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mLike Load (0.1ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."bookmark_id" = ?  ORDER BY "likes"."id" ASC LIMIT 1  [["user_id", 6], ["bookmark_id", 13]]
+  Rendered likes/_like.html.erb (0.6ms)
+  Rendered topics/show.html.erb within layouts/application (50.2ms)
+Completed 200 OK in 82ms (Views: 75.7ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/topics" for ::1 at 2018-03-30 10:55:45 -0600
+Processing by TopicsController#index as HTML
+  [1m[36mTopic Load (0.1ms)[0m  [1mSELECT "topics".* FROM "topics"[0m
+  [1m[35mBookmark Load (0.1ms)[0m  SELECT "bookmarks".* FROM "bookmarks"
+  Rendered topics/index.html.erb within layouts/application (2.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+Completed 200 OK in 29ms (Views: 28.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/topics/2" for ::1 at 2018-03-30 10:55:48 -0600
+Processing by TopicsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mTopic Load (0.1ms)[0m  SELECT  "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mBookmark Load (0.1ms)[0m  [1mSELECT "bookmarks".* FROM "bookmarks" WHERE "bookmarks"."topic_id" = ?[0m  [["topic_id", 2]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mLike Load (0.1ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."bookmark_id" = ?  ORDER BY "likes"."id" ASC LIMIT 1  [["user_id", 6], ["bookmark_id", 4]]
+  Rendered likes/_like.html.erb (2.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mLike Load (0.1ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."bookmark_id" = ?  ORDER BY "likes"."id" ASC LIMIT 1  [["user_id", 6], ["bookmark_id", 7]]
+  Rendered likes/_like.html.erb (0.9ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mLike Load (0.1ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."bookmark_id" = ?  ORDER BY "likes"."id" ASC LIMIT 1  [["user_id", 6], ["bookmark_id", 12]]
+  Rendered likes/_like.html.erb (1.0ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mLike Load (0.1ms)[0m  SELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."bookmark_id" = ?  ORDER BY "likes"."id" ASC LIMIT 1  [["user_id", 6], ["bookmark_id", 14]]
+  Rendered likes/_like.html.erb (1.2ms)
+  Rendered topics/show.html.erb within layouts/application (15.8ms)
+Completed 200 OK in 47ms (Views: 44.8ms | ActiveRecord: 1.0ms)
